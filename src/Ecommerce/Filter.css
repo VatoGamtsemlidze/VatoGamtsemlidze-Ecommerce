@@ -1,0 +1,49 @@
+div a {
+  color: gray;
+  text-decoration: none;
+}
+div p {
+  text-transform: uppercase;
+  font-size: 13px;
+  color: gray;
+}
+div p a {
+  color: #666666;
+  font-weight: 500;
+}
+div p a:hover {
+  transition-duration: 0.5s;
+  color: #2a2a2a;
+}
+div ul {
+  list-style: none;
+  margin-left: -40px;
+}
+div ul li {
+  padding-top: 5px;
+}
+div ul a {
+  text-transform: uppercase;
+  font-size: 13px;
+}
+div .main-filter h2 {
+  font-weight: 500;
+  color: #444444;
+}
+div .main-filter h4 {
+  font-weight: 500;
+  color: #444444;
+}
+div .main-filter ul li {
+  color: gray;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+div .main-filter .review-cont ul li {
+  padding-top: 7px;
+}
+div .main-filter .review-cont ul li a {
+  color: #4141e5;
+}
+
+/*# sourceMappingURL=Filter.css.map */
