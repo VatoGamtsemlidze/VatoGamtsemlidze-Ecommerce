@@ -54,5 +54,41 @@ div{
         }
       }
     }
+    .price-filter{
+      #outlined-basic{
+        width: 150px;
+      }
+      .price-input{
+        display: flex;
+        max-width: 380px;
+        justify-content: space-between;
+      }
+      .price-slider{
+        max-width: 400px;
+      }
+    }
+    .size-color-cont{
+      .size-cont{
+        ul{
+          li{
+            padding: 0;
+          }
+        }
+      }
+      .drop-down-size{
+        button{
+          border: none;
+          cursor: pointer;
+          color: gray;
+          text-transform: uppercase;
+          font-weight: 600;
+          background-color: transparent;
+          font-size: 11px;
+          &:hover{
+            color: #454545;
+          }
+        }
+        }
+    }
   }
 }

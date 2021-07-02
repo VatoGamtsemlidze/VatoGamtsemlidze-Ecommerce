@@ -45,5 +45,31 @@ div .main-filter .review-cont ul li {
 div .main-filter .review-cont ul li a {
   color: #4141e5;
 }
+div .main-filter .price-filter #outlined-basic {
+  width: 150px;
+}
+div .main-filter .price-filter .price-input {
+  display: flex;
+  max-width: 380px;
+  justify-content: space-between;
+}
+div .main-filter .price-filter .price-slider {
+  max-width: 400px;
+}
+div .main-filter .size-color-cont .size-cont ul li {
+  padding: 0;
+}
+div .main-filter .size-color-cont .drop-down-size button {
+  border: none;
+  cursor: pointer;
+  color: gray;
+  text-transform: uppercase;
+  font-weight: 600;
+  background-color: transparent;
+  font-size: 11px;
+}
+div .main-filter .size-color-cont .drop-down-size button:hover {
+  color: #454545;
+}
 
 /*# sourceMappingURL=Filter.css.map */

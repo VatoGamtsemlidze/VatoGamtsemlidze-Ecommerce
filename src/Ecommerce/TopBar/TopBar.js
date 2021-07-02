@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -44,6 +44,14 @@ export default function TopBar() {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+    const [scrolled, setScrolled] = useState(0);
+
+    useEffect(() => {
+            window.onscroll = () => {
+                setScrolled(window.pageYOffset);
+            }
+    }, []);
+
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -94,7 +102,7 @@ export default function TopBar() {
         >
             <MenuItem>
                 <IconButton aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={4} color="secondary">
+                    <Badge badgeContent={4} >
                         <MailIcon />
                     </Badge>
                 </IconButton>
@@ -124,7 +132,7 @@ export default function TopBar() {
 
     return (
         <div className={classes.grow}>
-            <AppBar position="fixed" style={{background: "transparent", boxShadow: "none"}}>
+            <AppBar position="fixed" style={{background: scrolled>0 ? "white" : "transparent", boxShadow: "none"}}>
                 <Toolbar>
                     <IconButton
                         edge="start"
@@ -132,20 +140,20 @@ export default function TopBar() {
                         color="inherit"
                         aria-label="open drawer"
                     >
-                        <MenuIcon />
+                        <MenuIcon style={{color: scrolled ? "gray" : "white"}}/>
                     </IconButton>
-                    <Typography className={classes.title} variant="h6" noWrap>
+                    <Typography className={classes.title} variant="h6" noWrap style={{color: scrolled ? "gray" : "white"}}>
                         Material-UI
                     </Typography>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
                         <IconButton aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="secondary">
+                            <Badge badgeContent={4} color="secondary" style={{color: scrolled ? "gray" : "white"}}>
                                 <MailIcon />
                             </Badge>
                         </IconButton>
                         <IconButton aria-label="show 17 new notifications" color="inherit">
-                            <Badge badgeContent={17} color="secondary">
+                            <Badge badgeContent={17} color="secondary" style={{color: scrolled ? "gray" : "white"}}>
                                 <NotificationsIcon />
                             </Badge>
                         </IconButton>
@@ -156,6 +164,7 @@ export default function TopBar() {
                             aria-haspopup="true"
                             onClick={handleProfileMenuOpen}
                             color="inherit"
+                            style={{color: scrolled ? "gray" : "white"}}
                         >
                             <AccountCircle />
                         </IconButton>
