@@ -9,7 +9,11 @@ h1{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url("https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg");
+    background-image: url("https://mdbootstrap.com/img/Photos/Others/clothes(5)-crop.jpg?fbclid=IwAR2_-wcI6_e7rOQP0Q0fe847J_4d2xsb97uB1zmC9lSJEPhPWh_u1bkrXZA");
     margin-top: -65px;
     color: white;
+}
+.mask, mask:after{
+    background-color: rgba(0,0,0,.7);
+
 }

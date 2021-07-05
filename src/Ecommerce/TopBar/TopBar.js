@@ -145,7 +145,7 @@ export default function TopBar() {
                     <Typography className={classes.title} variant="h6" noWrap style={{color: scrolled ? "gray" : "white"}}>
                         Material-UI
                     </Typography>
-                    <div className={classes.grow} />
+                    <div className={classes.gronw} />
                     <div className={classes.sectionDesktop}>
                         <IconButton aria-label="show 4 new mails" color="inherit">
                             <Badge badgeContent={4} color="secondary" style={{color: scrolled ? "gray" : "white"}}>

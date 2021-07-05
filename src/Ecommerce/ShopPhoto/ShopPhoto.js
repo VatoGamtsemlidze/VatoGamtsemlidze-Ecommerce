@@ -3,7 +3,7 @@ import './ShopPhoto.css'
 
 const MyComponent = () => {
     return (
-        <div>
+        <div className="mask">
             <h1>Shop</h1>
         </div>
     );
