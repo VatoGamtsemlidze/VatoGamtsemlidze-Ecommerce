@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import TextField from '@material-ui/core/TextField';
 import './Filter.css'
-import {Button, Checkbox} from "@material-ui/core";
+import {Box, Button, Checkbox} from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
@@ -9,7 +9,7 @@ import CircleCheckedFilled from '@material-ui/icons/CheckCircle';
 import CircleUnchecked from '@material-ui/icons/RadioButtonUnchecked';
 import Grid from '@material-ui/core/Grid';
 import Slider from '@material-ui/core/Slider';
-import {CirclePicker} from 'react-color';
+import Circles from "./Circles";
 
 const Filter = () => {
 
@@ -177,10 +177,18 @@ const Filter = () => {
                     </div>
                     <div className="color-filter">
                         <h4 style={{fontWeight: "bold"}}>Color</h4>
-                        <CirclePicker
-                            color={selectedColor}
-                            onChangeComplete={color => setSelectedColor(color.hex)}
-                        /> {/*We Can Add more Attributes to this so we can change background color .etc.*/}
+                        <Box display='flex' flexWrap='wrap' ml='-15px' maxWidth="300px">
+                            <Circles bgcolor='#FFFFFF' />
+                            <Circles bgcolor='#9E9E9E' />
+                            <Circles bgcolor='#000000' />
+                            <Circles bgcolor='#4CAF50' />
+                            <Circles bgcolor='#2196F3' />
+                            <Circles bgcolor='#9C27B0' />
+                            <Circles bgcolor='#FFEB3B' />
+                            <Circles bgcolor='#3F51B5' />
+                            <Circles bgcolor='#F44336' />
+                            <Circles bgcolor='#FF9800' />
+                        </Box>
                     </div>
                 </div>
             </div>

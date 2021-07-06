@@ -7,6 +7,19 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import {Grid} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+    gridClass: {
+        display: "flex",
+        flexDirection: "column",
+    },
+    listClass: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+    }
+})
 
 const Product = () => {
 
@@ -103,10 +116,8 @@ const Product = () => {
         },
 
     ]);
-    const [listOrGrid, setListOrGrid] = useState(false);
-
-
-
+    const [listOrGrid, setListOrGrid] = useState(true);
+    const classes = useStyles();
 
     function getProducts(){
         fetch('https://fakestoreapi.com/products')
@@ -131,11 +142,11 @@ const Product = () => {
                 <div className="view-control">
                     <a
                         href="#">
-                        <ViewListIcon/>
+                        <ViewListIcon onClick={() => setListOrGrid(false)}/>
                     </a>
                     <a
                         href="#">
-                        <ViewModuleIcon/>
+                        <ViewModuleIcon onClick={() => setListOrGrid(true)}/>
                     </a>
                 </div>
                 <p>Label Example</p>
@@ -148,12 +159,15 @@ const Product = () => {
                 <Grid container className="product-cards">
                     {data.map((el, ) => {
                         return (
-                            <Grid xs={4} className="card">
+                            <Grid xs={listOrGrid ? 4 : 12} className="card">
                                 <Card>
                                     <CardActionArea>
-                                        <CardContent>
+                                        <CardContent
+                                            // style={{display: "flex", flexDirection: listOrGrid ? "column" : "row"}}
+                                            className={listOrGrid ? classes.gridClass : classes.listClass}
+                                        >
                                             <img src={`${el.image}`}/>
-                                            <p>{el.title}</p>
+                                            <h2>{el.title}</h2>
                                             <p>{el.price}</p>
                                         </CardContent>
                                     </CardActionArea>

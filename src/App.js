@@ -1,9 +1,9 @@
 import './App.css';
-import TopBar from "./Ecommerce/TopBar/TopBar";
-import ShopPhoto from "./Ecommerce/ShopPhoto/ShopPhoto";
-import Main from "./Ecommerce/Main/Main";
-import SocialAd from './Ecommerce/SocialAd/SocialAd';
-import Footer from "./Ecommerce/Footer/Footer";
+import TopBar from "./Components/TopBar/TopBar";
+import ShopPhoto from "./Components/ShopPhoto/ShopPhoto";
+import Main from "./Components/Main/Main";
+import SocialAd from './Components/SocialAd/SocialAd';
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (

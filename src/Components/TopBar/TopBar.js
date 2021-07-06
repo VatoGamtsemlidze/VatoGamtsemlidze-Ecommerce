@@ -8,6 +8,7 @@ import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
+import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -47,11 +48,10 @@ export default function TopBar() {
     const [scrolled, setScrolled] = useState(0);
 
     useEffect(() => {
-            window.onscroll = () => {
-                setScrolled(window.pageYOffset);
-            }
+        window.onscroll = () => {
+            setScrolled(window.pageYOffset);
+        }
     }, []);
-
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -102,7 +102,7 @@ export default function TopBar() {
         >
             <MenuItem>
                 <IconButton aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={4} >
+                    <Badge badgeContent={4} color="secondary">
                         <MailIcon />
                     </Badge>
                 </IconButton>
@@ -132,7 +132,7 @@ export default function TopBar() {
 
     return (
         <div className={classes.grow}>
-            <AppBar position="fixed" style={{background: scrolled>0 ? "white" : "transparent", boxShadow: "none"}}>
+            <AppBar position="fixed" className={classes.appBar} style={{background: scrolled>0 ? "white" : "transparent", boxShadow: "none"}}>
                 <Toolbar>
                     <IconButton
                         edge="start"
@@ -145,16 +145,16 @@ export default function TopBar() {
                     <Typography className={classes.title} variant="h6" noWrap style={{color: scrolled ? "gray" : "white"}}>
                         Material-UI
                     </Typography>
-                    <div className={classes.gronw} />
+                    <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
                         <IconButton aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="secondary" style={{color: scrolled ? "gray" : "white"}}>
-                                <MailIcon />
+                            <Badge badgeContent={4} color="secondary">
+                                <MailIcon style={{color: scrolled ? "gray" : "white"}}/>
                             </Badge>
                         </IconButton>
                         <IconButton aria-label="show 17 new notifications" color="inherit">
-                            <Badge badgeContent={17} color="secondary" style={{color: scrolled ? "gray" : "white"}}>
-                                <NotificationsIcon />
+                            <Badge badgeContent={17} color="secondary">
+                                <NotificationsIcon style={{color: scrolled ? "gray" : "white"}}/>
                             </Badge>
                         </IconButton>
                         <IconButton
@@ -164,9 +164,8 @@ export default function TopBar() {
                             aria-haspopup="true"
                             onClick={handleProfileMenuOpen}
                             color="inherit"
-                            style={{color: scrolled ? "gray" : "white"}}
                         >
-                            <AccountCircle />
+                            <AccountCircle style={{color: scrolled ? "gray" : "white"}}/>
                         </IconButton>
                     </div>
                     <div className={classes.sectionMobile}>

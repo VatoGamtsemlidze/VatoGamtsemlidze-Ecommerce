@@ -18,8 +18,14 @@
     .card{
       width: 100%;
       min-height: 300px;
+      h2{
+        text-align: center;
+      }
       p{
         text-align: center;
+        color: black;
+        font-size: 17px;
+        font-weight: 550;
       }
     }
   }
