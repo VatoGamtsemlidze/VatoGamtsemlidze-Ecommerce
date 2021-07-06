@@ -18,6 +18,18 @@ const useStyles = makeStyles({
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
+    },
+    customCard: {
+        border: "none",
+        boxShadow: "none",
+    },
+    cardImg: {
+        marginTop: "-10px",
+        borderRadius: "5px",
+        "&:hover": {
+            transitionDuration: "2s",
+            transform: "scale(1.25)"
+        },
     }
 })
 
@@ -26,94 +38,65 @@ const Product = () => {
     const [data, setData] = useState([
         {
             title: 'Blue Jam Jeans',
-            image: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
+            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
             price: '$45'
         },
         {
             title: 'Blue Jam Jeans',
-            image: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
+            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
             price: '$45'
         },
         {
             title: 'Blue Jam Jeans',
-            image: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
+            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
             price: '$45'
         },
         {
             title: 'Blue Jam Jeans',
-            image: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
+            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
             price: '$45'
         },
         {
             title: 'Blue Jam Jeans',
-            image: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
+            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
             price: '$45'
         },
         {
             title: 'Blue Jam Jeans',
-            image: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
+            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
             price: '$45'
         },
         {
             title: 'Blue Jam Jeans',
-            image: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
+            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
             price: '$45'
         },
         {
             title: 'Blue Jam Jeans',
-            image: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
+            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
             price: '$45'
         },
         {
             title: 'Blue Jam Jeans',
-            image: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
+            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
             price: '$45'
         },
         {
             title: 'Blue Jam Jeans',
-            image: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
+            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
             price: '$45'
         },
         {
             title: 'Blue Jam Jeans',
-            image: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
+            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
             price: '$45'
         },
         {
             title: 'Blue Jam Jeans',
-            image: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
+            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
             price: '$45'
         },
-        {
-            title: 'Blue Jam Jeans',
-            image: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
-            price: '$45'
-        },
-        {
-            title: 'Blue Jam Jeans',
-            image: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
-            price: '$45'
-        },
-        {
-            title: 'Blue Jam Jeans',
-            image: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
-            price: '$45'
-        },
-        {
-            title: 'Blue Jam Jeans',
-            image: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
-            price: '$45'
-        },
-        {
-            title: 'Blue Jam Jeans',
-            image: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
-            price: '$45'
-        },
-        {
-            title: 'Blue Jam Jeans',
-            image: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
-            price: '$45'
-        },
+
 
     ]);
     const [listOrGrid, setListOrGrid] = useState(true);
@@ -133,9 +116,7 @@ const Product = () => {
                 )
             });
     }
-
     // getProducts();
-
     return (
         <div className="product-main">
             <div className="product-control">
@@ -154,19 +135,15 @@ const Product = () => {
                     <Pagination count={3}/>
                 </div>
             </div>
-
             {(typeof data != 'undefined') ? (
                 <Grid container className="product-cards">
                     {data.map((el, ) => {
                         return (
                             <Grid xs={listOrGrid ? 4 : 12} className="card">
-                                <Card>
+                                <Card className={classes.customCard}>
                                     <CardActionArea>
-                                        <CardContent
-                                            // style={{display: "flex", flexDirection: listOrGrid ? "column" : "row"}}
-                                            className={listOrGrid ? classes.gridClass : classes.listClass}
-                                        >
-                                            <img src={`${el.image}`}/>
+                                        <CardContent className={listOrGrid ? classes.gridClass : classes.listClass}>
+                                            <img className={classes.cardImg} style={{maxWidth: listOrGrid ? "300px" : "200px"}} src={`${el.image}`}/>
                                             <h2>{el.title}</h2>
                                             <p>{el.price}</p>
                                         </CardContent>
@@ -177,11 +154,16 @@ const Product = () => {
                     })}
                 </Grid>
             ) : (' ')}
-
             <div className="product-control">
                 <div className="view-control">
-                    <a href="#"><ViewListIcon/></a>
-                    <a href="#"><ViewModuleIcon/></a>
+                    <a
+                        href="#">
+                        <ViewListIcon onClick={() => setListOrGrid(false)}/>
+                    </a>
+                    <a
+                        href="#">
+                        <ViewModuleIcon onClick={() => setListOrGrid(true)}/>
+                    </a>
                 </div>
                 <p>Label Example</p>
                 <div className="pagination">
@@ -191,5 +173,4 @@ const Product = () => {
         </div>
     );
 };
-
 export default Product;

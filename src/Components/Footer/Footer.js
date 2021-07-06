@@ -18,7 +18,6 @@ const Footer = () => {
                 <Grid xs={3}>
                     <h5>Products</h5>
                     <hr style={{width: "50%",borderStyle:"inset", textAlign: "left", marginLeft: "0", backgroundColor: "#1264EB",marginTop: "-15px"}} />
-
                     <ul>
                         <li><a href="#">MDBootstrap</a></li>
                         <li><a href="#">MDWordPress</a></li>
@@ -29,7 +28,6 @@ const Footer = () => {
                 <Grid xs={3}>
                     <h5>Useful links</h5>
                     <hr style={{width: "50%",borderStyle:"inset", textAlign: "left", marginLeft: "0", backgroundColor: "#1264EB",marginTop: "-15px"}} />
-
                     <ul>
                         <li><a href="#">Your Account</a></li>
                         <li><a href="#">Become an Affiliate</a></li>
@@ -40,7 +38,6 @@ const Footer = () => {
                 <Grid xs={3}>
                     <h5>Contacts</h5>
                     <hr style={{width: "50%",borderStyle:"inset", textAlign: "left", marginLeft: "0", backgroundColor: "#1264EB",marginTop: "-15px"}} />
-
                     <ul>
                         <li><a href="#"><MapIcon/><p> New York, Avenue Street 10</p></a></li>
                         <li><a href="#"><PhoneIcon/><p> 042 876 836 908</p></a></li>

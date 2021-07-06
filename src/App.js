@@ -6,16 +6,16 @@ import SocialAd from './Components/SocialAd/SocialAd';
 import Footer from "./Components/Footer/Footer";
 
 function App() {
-  return (
-    <div>
-        <TopBar/>
-        <ShopPhoto/>
-        <div className="main-cont">
-            <Main/>
-            <SocialAd/>
-            <Footer/>
+    return (
+        <div>
+            <TopBar/>
+            <ShopPhoto/>
+            <div className="main-cont">
+                <Main/>
+                <SocialAd/>
+                <Footer/>
+            </div>
         </div>
-    </div>
   );
 }
 export default App;

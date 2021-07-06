@@ -47,27 +47,6 @@ const Filter = () => {
                         <SearchIcon />
                     </Button>
                 </form>
-                {/*<FormControl component="fieldset" className="">
-                <FormLabel className="formLabel" component="legend">Condition</FormLabel>
-                <FormGroup className="formGroup">
-                    <FormControlLabel
-                        control={<Checkbox/>}
-                        label="NEW"
-                    />
-                    <FormControlLabel
-                        control={<Checkbox/>}
-                        label="USED"
-                    />
-                    <FormControlLabel
-                        control={<Checkbox/>}
-                        label="COLLECTIABLE"
-                    />
-                    <FormControlLabel
-                        control={<Checkbox/>}
-                        label="RENEWED"
-                    />
-                </FormGroup>
-            </FormControl>*/}
                 <h4>Condition</h4>
                 <ul>
                     <li><Checkbox/>new</li>
