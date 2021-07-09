@@ -88,11 +88,7 @@ const ProductDes = () => {
                     <Grid xs={3}>
                         <p>Quantity</p>
                         <ul style={{display:"flex", justifyContent:"space-between", height:"30px",}}>
-                            <li
-                                className={classes.borderList}>
-                                <button
-                                    className={classes.btn}
-                                    onClick={() => {count>0 ? setCount(count-1) : alert("Quantity Can not be negative")}}>
+                            <li className={classes.borderList}><button className={classes.btn} onClick={() => {count>0 ? setCount(count-1) : alert("Quantity Can not be negative")}}>
                                     -
                                 </button>
                             </li>
@@ -100,14 +96,16 @@ const ProductDes = () => {
                             <li className={classes.borderList}><button className={classes.btn} onClick={() => {setCount(count+1)}} >+</button></li>
                         </ul>
                     </Grid>
+                    <Box pl={5}>
                     <Grid xs={9}>
                         <p>Select Size</p>
-                        <ul style={{display:"flex",justifyContent:"space-around", width:"70%",marginTop:"-10px"}}>
-                            <li><Checkbox/>Small</li>
-                            <li><Checkbox/>Medium</li>
-                            <li><Checkbox/>Large</li>
+                        <ul style={{display:"flex",justifyContent:"space-around",width:"100", marginTop:"-10px"}}>
+                            <li style={{width:"200px"}} ><Checkbox/>Small</li>
+                            <li style={{width:"200px"}}><Checkbox/>Medium</li>
+                            <li style={{width:"200px"}}><Checkbox/>Large</li>
                         </ul>
                     </Grid>
+                    </Box>
                 </Box>
                 <Box display="flex">
                     <Grid xs={2}>
