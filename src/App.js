@@ -1,21 +1,18 @@
 import './App.css';
-import TopBar from "./Components/TopBar/TopBar";
-import ShopPhoto from "./Components/ShopPhoto/ShopPhoto";
-import Main from "./Components/Main/Main";
-import SocialAd from './Components/SocialAd/SocialAd';
-import Footer from "./Components/Footer/Footer";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import SingleProduct from "./Components/SingleProduct/SingleProduct";
+import MainPage from "./Components/MainPage/MainPage";
 
 function App() {
     return (
-        <div>
-            <TopBar/>
-            <ShopPhoto/>
-            <div className="main-cont">
-                <Main/>
-                <SocialAd/>
-                <Footer/>
+        <BrowserRouter>
+            <div>
+                <Switch>
+                    <Route path="/" exact component={MainPage}/>
+                    <Route path="/product" component={SingleProduct}/>
+                </Switch>
             </div>
-        </div>
+        </BrowserRouter>
   );
 }
 export default App;

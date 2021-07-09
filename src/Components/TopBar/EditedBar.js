@@ -136,7 +136,7 @@ export default function TopBar(background) {
 
     return (
         <div className={classes.grow}>
-            <AppBar position="fixed" className={classes.appBar} style={{background: scrolled>0 ? "white" : "transparent", boxShadow: "none",}}>
+            <AppBar position="relative" className={classes.appBar} style={{background: "white", boxShadow: "none",}}>
                 <Toolbar>
                     <IconButton
                         edge="start"
@@ -145,21 +145,21 @@ export default function TopBar(background) {
                         aria-label="open drawer"
 
                     >
-                        <MenuIcon style={{color: scrolled ? "gray" : "white"}}/>
+                        <MenuIcon style={{color:"gray"}}/>
                     </IconButton>
-                    <Typography className={classes.title} variant="h6" noWrap style={{color: scrolled ? "gray" : "white"}}>
+                    <Typography className={classes.title} variant="h6" noWrap style={{color:"gray"}}>
                         Material-UI
                     </Typography>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
                         <IconButton aria-label="show 4 new mails" color="inherit">
                             <Badge badgeContent={4} color="secondary">
-                                <MailIcon style={{color: scrolled ? "gray" : "white"}}/>
+                                <MailIcon style={{color:"gray"}}/>
                             </Badge>
                         </IconButton>
                         <IconButton aria-label="show 17 new notifications" color="inherit">
                             <Badge badgeContent={17} color="secondary">
-                                <NotificationsIcon style={{color: scrolled ? "gray" : "white"}}/>
+                                <NotificationsIcon style={{color:"gray"}}/>
                             </Badge>
                         </IconButton>
                         <IconButton>
@@ -176,7 +176,7 @@ export default function TopBar(background) {
                             onClick={handleProfileMenuOpen}
                             color="inherit"
                         >
-                            <AccountCircle style={{color: scrolled ? "gray" : "white"}}/>
+                            <AccountCircle style={{color:"gray"}}/>
                         </IconButton>
                     </div>
                     <div className={classes.sectionMobile}>

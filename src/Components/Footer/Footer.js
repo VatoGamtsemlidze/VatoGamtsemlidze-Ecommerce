@@ -5,10 +5,12 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 import './Footer.css'
+import SocialAd from "../SocialAd/SocialAd";
 
 const Footer = () => {
     return (
         <div className="footer-main">
+            <SocialAd/>
             <Container maxWidth="lg" style={{display: "flex"}}>
                 <Grid xs={3}>
                     <h5>About Me</h5>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Product.css'
 import {Pagination} from "@material-ui/lab";
 import ViewListIcon from '@material-ui/icons/ViewList';
@@ -8,6 +8,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import {Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles({
     gridClass: {
@@ -37,67 +38,10 @@ const Product = () => {
 
     const [data, setData] = useState([
         {
-            title: 'Blue Jam Jeans',
+        title: 'Blue Jam Jeans',
             image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
             price: '$45'
         },
-        {
-            title: 'Blue Jam Jeans',
-            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
-            price: '$45'
-        },
-        {
-            title: 'Blue Jam Jeans',
-            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
-            price: '$45'
-        },
-        {
-            title: 'Blue Jam Jeans',
-            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
-            price: '$45'
-        },
-        {
-            title: 'Blue Jam Jeans',
-            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
-            price: '$45'
-        },
-        {
-            title: 'Blue Jam Jeans',
-            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
-            price: '$45'
-        },
-        {
-            title: 'Blue Jam Jeans',
-            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
-            price: '$45'
-        },
-        {
-            title: 'Blue Jam Jeans',
-            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
-            price: '$45'
-        },
-        {
-            title: 'Blue Jam Jeans',
-            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
-            price: '$45'
-        },
-        {
-            title: 'Blue Jam Jeans',
-            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
-            price: '$45'
-        },
-        {
-            title: 'Blue Jam Jeans',
-            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
-            price: '$45'
-        },
-        {
-            title: 'Blue Jam Jeans',
-            image: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F5a%2F71%2F5a7120e0ad22d596053262050a1c16514fdb3d9f.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_jackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]',
-            price: '$45'
-        },
-
-
     ]);
     const [listOrGrid, setListOrGrid] = useState(true);
     const classes = useStyles();
@@ -108,26 +52,33 @@ const Product = () => {
             .then(dt => {
                 console.log(dt);
                 setData(
-                    {
+                    [{
                         title: dt.title,
                         image: dt.image,
                         price: dt.price,
-                    }
+                    }]
                 )
-            });
+            })
+            .catch(error => {
+                console.log("Error: "+ error);
+            })
     }
-    // getProducts();
+
+    // useEffect(() => {
+    //     getProducts();
+    // }, []);
+
     return (
         <div className="product-main">
             <div className="product-control">
                 <div className="view-control">
                     <a
                         href="#">
-                        <ViewListIcon onClick={() => setListOrGrid(false)}/>
+                        <ViewListIcon onClick={(e) => {e.preventDefault();  setListOrGrid(false)}}/>
                     </a>
                     <a
                         href="#">
-                        <ViewModuleIcon onClick={() => setListOrGrid(true)}/>
+                        <ViewModuleIcon onClick={(e) => {e.preventDefault(); setListOrGrid(true)}}/>
                     </a>
                 </div>
                 <p>Label Example</p>
@@ -137,14 +88,14 @@ const Product = () => {
             </div>
             {(typeof data != 'undefined') ? (
                 <Grid container className="product-cards">
-                    {data.map((el, ) => {
+                    {data.map((el) => {
                         return (
                             <Grid xs={listOrGrid ? 4 : 12} className="card">
                                 <Card className={classes.customCard}>
                                     <CardActionArea>
                                         <CardContent className={listOrGrid ? classes.gridClass : classes.listClass}>
                                             <img className={classes.cardImg} style={{maxWidth: listOrGrid ? "300px" : "200px"}} src={`${el.image}`}/>
-                                            <h2>{el.title}</h2>
+                                            <Link to="/product"><h2>{el.title}</h2></Link>
                                             <p>{el.price}</p>
                                         </CardContent>
                                     </CardActionArea>
