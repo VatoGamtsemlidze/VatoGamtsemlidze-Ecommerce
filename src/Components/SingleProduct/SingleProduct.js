@@ -1,12 +1,12 @@
 import React from 'react';
 import EditedBar from "../TopBar/EditedBar";
 import Footer from "../Footer/Footer";
-import Title from "./Title";
+import Title from "./SingleProductComps/Title";
 import Grid from "@material-ui/core/Grid";
 import {Container} from "@material-ui/core";
-import ProductImages from "./ProductImages";
-import ProductDes from "./ProductDes";
-import Tabs from './Tabs';
+import ProductImages from "./SingleProductComps/ProductImages";
+import ProductDes from "./SingleProductComps/ProductDes";
+import Tabs from './Tabs/Tabs';
 
 const SingleProduct = () => {
     return (
