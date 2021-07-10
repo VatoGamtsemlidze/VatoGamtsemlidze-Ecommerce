@@ -3,7 +3,7 @@ import EditedBar from "../TopBar/EditedBar";
 import Footer from "../Footer/Footer";
 import Title from "./Title";
 import Grid from "@material-ui/core/Grid";
-import {Box, Container} from "@material-ui/core";
+import {Container} from "@material-ui/core";
 import ProductImages from "./ProductImages";
 import ProductDes from "./ProductDes";
 import Tabs from './Tabs';

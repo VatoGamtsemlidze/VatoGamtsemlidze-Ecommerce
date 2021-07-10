@@ -35,6 +35,9 @@ const useStyles = makeStyles({
         width: "30px",
         backgroundColor: "transparent",
         cursor: "pointer",
+        "&:active": {
+            backgroundColor: "transparent",
+        }
     },
     buyButton: {
         fontSize: "12px",
@@ -87,13 +90,13 @@ const ProductDes = () => {
                 <Box display="flex" pt={2}>
                     <Grid xs={3}>
                         <p>Quantity</p>
-                        <ul style={{display:"flex", justifyContent:"space-between", height:"30px",}}>
-                            <li className={classes.borderList}><button className={classes.btn} onClick={() => {count>0 ? setCount(count-1) : alert("Quantity Can not be negative")}}>
+                        <ul style={{display:"flex", justifyContent:"space-between",alignItems:"center"}}>
+                            <li className={classes.borderList}><Button className={classes.btn} onClick={() => {count>0 ? setCount(count-1) : alert("Quantity Can not be negative")}}>
                                     -
-                                </button>
+                                </Button>
                             </li>
                             <li className={classes.borderList}>{count}</li>
-                            <li className={classes.borderList}><button className={classes.btn} onClick={() => {setCount(count+1)}} >+</button></li>
+                            <li className={classes.borderList}><Button className={classes.btn} onClick={() => {setCount(count+1)}} >+</Button></li>
                         </ul>
                     </Grid>
                     <Box pl={5}>
