@@ -26,14 +26,12 @@ const useStyles = makeStyles({
     }
 })
 
-const ProductImages = () => {
+const ProductImages = ({imageUrl}) => {
 
     const classes = useStyles();
     const [data, setData] = useState(
         {
-            title: 'Blue Jam Jeans',
-            image: 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14a.jpg',
-            price: '$45'
+            image: imageUrl,
         },
     );
 

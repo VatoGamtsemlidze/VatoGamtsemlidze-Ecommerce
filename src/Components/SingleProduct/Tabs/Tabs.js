@@ -71,7 +71,13 @@ export default function SimpleTabs() {
     return (
         <div className={classes.root}>
             <AppBar position="static">
-                <Tabs classes={{indicator: classes.indicator}} value={value} onChange={handleChange} aria-label="simple tabs example" style={{backgroundColor:"white"}} centered>
+                <Tabs classes={{indicator: classes.indicator}}
+                      value={value}
+                      onChange={handleChange}
+                      aria-label="simple tabs example"
+                      style={{backgroundColor:"white"}}
+                      variant="fullWidth"
+                      centered>
                     <Tab label="Description" className={classes.labels} {...a11yProps(0)} />
                     <Tab label="Information" className={classes.labels}{...a11yProps(1)} />
                     <Tab label="Review" className={classes.labels}{...a11yProps(2)} />

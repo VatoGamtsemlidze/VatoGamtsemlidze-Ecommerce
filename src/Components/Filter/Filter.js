@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import TextField from '@material-ui/core/TextField';
 import './Filter.css'
-import {Box, Button, Checkbox} from "@material-ui/core";
+import {Box, Button, Checkbox, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
@@ -11,10 +11,14 @@ import Grid from '@material-ui/core/Grid';
 import Slider from '@material-ui/core/Slider';
 import Circles from "./Circles";
 
-const Filter = () => {
+const Filter = (filter) => {
 
     const [moreSize, setMoreSize] = useState(false);
-    const [selectedColor, setSelectedColor] = useState('');
+    const [value, setValue] = React.useState('female');
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    };
 
     let toggleMoreSize = () => {
         setMoreSize(!moreSize);
@@ -79,43 +83,15 @@ const Filter = () => {
                 </div>
                 <div className="price-filter">
                     <h4>Price</h4>
-                    <ul>
-                        <li>
-                            <Checkbox
-                                icon={<CircleUnchecked />}
-                                checkedIcon={<CircleCheckedFilled />}
-                            />
-                            under $25
-                        </li>
-                        <li>
-                            <Checkbox
-                                icon={<CircleUnchecked />}
-                                checkedIcon={<CircleCheckedFilled />}
-                            />
-                            $25 to $50
-                        </li>
-                        <li>
-                            <Checkbox
-                                icon={<CircleUnchecked />}
-                                checkedIcon={<CircleCheckedFilled />}
-                            />
-                            $50 to $100
-                        </li>
-                        <li>
-                            <Checkbox
-                                icon={<CircleUnchecked />}
-                                checkedIcon={<CircleCheckedFilled />}
-                            />
-                            $100 to $200
-                        </li>
-                        <li>
-                            <Checkbox
-                                icon={<CircleUnchecked />}
-                                checkedIcon={<CircleCheckedFilled />}
-                            />
-                            $200 & above
-                        </li>
-                    </ul>
+                    <FormControl component="fieldset">
+                        <RadioGroup aria-label="price" name="price1" value={value} onChange={handleChange}>
+                            <FormControlLabel value=">25" control={<Radio color="primary"/>} label="Under $25" />
+                            <FormControlLabel value="25<50" control={<Radio color="primary"/>} label="$25 to $50" />
+                            <FormControlLabel value="50<100" control={<Radio color="primary"/>} label="$50 to $100" />
+                            <FormControlLabel value="100<200" control={<Radio color="primary"/>} label="$100 to $200" />
+                            <FormControlLabel value="200<" control={<Radio color="primary"/>} label="$200 & above" />
+                        </RadioGroup>
+                    </FormControl>
                     <div className="price-input">
                         <TextField id="outlined-basic" label="$ Min" variant="outlined" size="small" />
                         <p>-</p>

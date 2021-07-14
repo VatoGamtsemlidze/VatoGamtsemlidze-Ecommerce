@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Box, Button, Checkbox} from "@material-ui/core";
+import {Box, Button, Checkbox, FormControl, FormControlLabel, Radio, RadioGroup} from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import {makeStyles} from "@material-ui/core/styles";
@@ -55,22 +55,31 @@ const useStyles = makeStyles({
     },
 })
 
-const ProductDes = () => {
+const ProductDes = ({title, description, price}) => {
 
     const classes = useStyles();
     const [count, setCount] = useState(1);
+    const [value, setValue] = React.useState('female');
+    const [data, setData] = useState({
+        title: title,
+        description: description,
+        price: price,
+    });
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    };
 
     return (
         <div>
             <Box display="flex" flexDirection="column">
-                <h3>Blue denim shirt</h3>
+                <h3>{data.title}</h3>
                 <p>SHIRTS</p>
                 <a href="#" style={{color:"#1266F1"}}>
                     <StarIcon/><StarIcon/><StarIcon/><StarIcon/><StarBorderIcon/>
                 </a>
-                <h4>$17.99</h4>
-                <p className={classes.pTag}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sapiente illo. Sit error voluptas repellat rerum quidem,
-                    soluta enim perferendis voluptates laboriosam. Distinctio, officia quis dolore quos sapiente tempore alias.</p>
+                <h4>${data.price}</h4>
+                <p className={classes.pTag}>{data.description}</p>
                 <Box display="flex" borderBottom={1} borderColor="#E5E5E5">
                     <Grid xs={2}>
                         <ul>
@@ -102,11 +111,15 @@ const ProductDes = () => {
                     <Box pl={5}>
                     <Grid xs={9}>
                         <p>Select Size</p>
-                        <ul style={{display:"flex",justifyContent:"space-around",width:"100", marginTop:"-10px"}}>
-                            <li style={{width:"200px"}} ><Checkbox/>Small</li>
-                            <li style={{width:"200px"}}><Checkbox/>Medium</li>
-                            <li style={{width:"200px"}}><Checkbox/>Large</li>
-                        </ul>
+                        <FormControl component="fieldset">
+                            <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
+                                <Box display="flex">
+                                <FormControlLabel value="small" control={<Radio color="primary" />} label="Small" />
+                                <FormControlLabel value="medium" control={<Radio color="primary"/>} label="Medium" />
+                                <FormControlLabel value="large" control={<Radio color="primary"/>} label="Large" />
+                                </Box>
+                            </RadioGroup>
+                        </FormControl>
                     </Grid>
                     </Box>
                 </Box>
