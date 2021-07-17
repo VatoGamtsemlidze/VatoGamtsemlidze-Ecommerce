@@ -1,29 +1,17 @@
 import React from 'react';
-import { makeStyles } from "@material-ui/core/styles"
-
-import {
-    BrowserRouter as Router,
-    Switch, Route, Link
-} from "react-router-dom";
-
-import {
-    Drawer, List, ListItem,
-    ListItemIcon, ListItemText,
-    Container, Typography,
-} from "@material-ui/core";
-
-import HomeIcon from "@material-ui/icons/Home";
-import InfoIcon from '@material-ui/icons/Info';
+import {BrowserRouter as Router,Switch, Route, Link} from "react-router-dom";
+import {Box, Button, Drawer, List, ListItem, ListItemText} from "@material-ui/core";
 import AdminProduct from "./AdminProduct";
 import AdminUsers from "./AdminUsers";
 import AdminCategories from "./AdminCategories";
 import {useStyles} from "./AdminStyles";
+import EditedBar from "../TopBar/EditedBar";
 
 function Admin() {
     const classes = useStyles();
     return (
         <Router>
-            <div style={{ display: 'flex' }}>
+            <div style={{display:'flex'}}>
                 <Drawer
                     style={{ width: '220px' }}
                     variant="persistent"
@@ -47,7 +35,11 @@ function Admin() {
                                 <ListItemText primary={"Categories"} />
                             </ListItem>
                         </Link>
+                        {/*<Link to="/">*/}
+                        {/*    <Button><HomeIcon/></Button>*/}
+                        {/*</Link>*/}
                     </List>
+
                 </Drawer>
                 <Switch>
                     <Route exact path="/admin_product">
