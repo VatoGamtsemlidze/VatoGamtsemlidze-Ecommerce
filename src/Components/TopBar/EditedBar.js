@@ -12,6 +12,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import {Link} from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -79,7 +81,7 @@ export default function TopBar(background) {
 
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
-        <Menu
+        <Link to="/admin"><Menu
             anchorEl={anchorEl}
             anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
             id={menuId}
@@ -88,9 +90,7 @@ export default function TopBar(background) {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-        </Menu>
+        </Menu></Link>
     );
 
     const mobileMenuId = 'primary-search-account-menu-mobile';
@@ -147,9 +147,11 @@ export default function TopBar(background) {
                     >
                         <MenuIcon style={{color:"gray"}}/>
                     </IconButton>
-                    <Typography className={classes.title} variant="h6" noWrap style={{color:"gray"}}>
-                        Material-UI
-                    </Typography>
+                    <Link to="/">
+                        <Typography className={classes.title} variant="h6" noWrap style={{color:"gray"}}>
+                            Material-UI
+                        </Typography>
+                    </Link>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
                         <IconButton aria-label="show 4 new mails" color="inherit">
@@ -168,16 +170,17 @@ export default function TopBar(background) {
                         <IconButton>
                             <p><a>Contact</a></p>
                         </IconButton>
-                        <IconButton
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-controls={menuId}
-                            aria-haspopup="true"
-                            onClick={handleProfileMenuOpen}
-                            color="inherit"
-                        >
-                            <AccountCircle style={{color:"gray"}}/>
-                        </IconButton>
+                        <Link to="/admin">
+                            <IconButton
+                                edge="end"
+                                aria-label="account of current user"
+                                aria-controls={menuId}
+                                aria-haspopup="true"
+                                onClick={handleProfileMenuOpen}
+                                color="inherit">
+                            <AccountCircle style={{color:"gray", marginTop:"7px"}}/>
+                            </IconButton>
+                        </Link>
                     </div>
                     <div className={classes.sectionMobile}>
                         <IconButton
@@ -193,7 +196,6 @@ export default function TopBar(background) {
                 </Toolbar>
             </AppBar>
             {renderMobileMenu}
-            {renderMenu}
         </div>
     );
 }

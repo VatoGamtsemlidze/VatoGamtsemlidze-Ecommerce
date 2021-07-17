@@ -10,6 +10,7 @@ import {Box, Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {Link} from "react-router-dom";
 import Loader from "../Loader/Loader";
+import {singlePagePath} from "../Routes/Routes";
 
 const useStyles = makeStyles({
     gridClass: {
@@ -41,7 +42,6 @@ const useStyles = makeStyles({
 
 const Product = ({}) => {
 
-    const singlePagePath = "/product/:id";
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([
         {
@@ -95,13 +95,13 @@ const Product = ({}) => {
                         {data.map((el) => {
                             return (
                                 <Grid xs={listOrGrid ? 4 : 12} className="card">
-                                    <Card className={classes.customCard}>
+                                    <Link to={singlePagePath.replace(':id', el.id)}><Card className={classes.customCard}>
                                         <CardActionArea>
                                             <CardContent className={listOrGrid ? classes.gridClass : classes.listClass}>
                                                 <img className={classes.cardImg} style={{maxWidth: listOrGrid ? "300px" : "200px"}} src={`${el.image}`}/>
                                                 <Box pl={3}>
                                                     <Box display={listOrGrid ? "block" : "flex"} justifyContent="space-between">
-                                                    <Link to={singlePagePath.replace(':id', el.id)}><h2 style={{maxWidth: "500px", color:"black",fontWeight:"500"}}>{el.title}</h2></Link>
+                                                    <h2 style={{maxWidth: "500px", color:"black",fontWeight:"500"}}>{el.title}</h2>
                                                     <p>${el.price}</p>
                                                     </Box>
                                                     <Box pt={3}>
@@ -110,7 +110,7 @@ const Product = ({}) => {
                                                 </Box>
                                                 </CardContent>
                                         </CardActionArea>
-                                    </Card>
+                                    </Card></Link>
                                 </Grid>
                             )
                         })}

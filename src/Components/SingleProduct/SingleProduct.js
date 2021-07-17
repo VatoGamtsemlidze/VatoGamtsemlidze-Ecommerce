@@ -40,16 +40,16 @@ const SingleProduct = () => {
                 });
             })
             .catch(error => {
-                console.log("Error: "+ error);
+                console.log("Error: " + error);
             })
             .finally(() => setLoading(false))
     }
 
     return (
         <Grid>
+            <EditedBar/>
+            <Title/>
             <Loader isLoading={loading}>
-                <EditedBar/>
-                <Title/>
                 <Container maxWidth="lg" style={{display: "flex", paddingTop:"50px"}}>
                     <Grid xs={6}>
                         <ProductImages imageUrl={data.image}/>
@@ -63,8 +63,8 @@ const SingleProduct = () => {
                         <Tabs/>
                     </Grid>
                 </Container>
-                <Footer/>
             </Loader>
+            <Footer/>
         </Grid>
     );
 };

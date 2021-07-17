@@ -12,6 +12,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -78,20 +79,6 @@ export default function TopBar(background) {
     };
 
     const menuId = 'primary-search-account-menu';
-    const renderMenu = (
-        <Menu
-            anchorEl={anchorEl}
-            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-            id={menuId}
-            keepMounted
-            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-            open={isMenuOpen}
-            onClose={handleMenuClose}
-        >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-        </Menu>
-    );
 
     const mobileMenuId = 'primary-search-account-menu-mobile';
     const renderMobileMenu = (
@@ -168,7 +155,7 @@ export default function TopBar(background) {
                         <IconButton>
                             <p><a>Contact</a></p>
                         </IconButton>
-                        <IconButton
+                        <Link to="/admin"><IconButton
                             edge="end"
                             aria-label="account of current user"
                             aria-controls={menuId}
@@ -176,8 +163,8 @@ export default function TopBar(background) {
                             onClick={handleProfileMenuOpen}
                             color="inherit"
                         >
-                            <AccountCircle style={{color: scrolled ? "gray" : "white"}}/>
-                        </IconButton>
+                            <AccountCircle style={{color: scrolled ? "gray" : "white", marginTop:"7px"}}/>
+                        </IconButton></Link>
                     </div>
                     <div className={classes.sectionMobile}>
                         <IconButton
@@ -193,7 +180,6 @@ export default function TopBar(background) {
                 </Toolbar>
             </AppBar>
             {renderMobileMenu}
-            {renderMenu}
         </div>
     );
 }

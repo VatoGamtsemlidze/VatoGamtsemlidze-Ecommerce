@@ -99,28 +99,28 @@ const ProductDes = ({title, description, price}) => {
                 <Box display="flex" pt={2}>
                     <Grid xs={3}>
                         <p>Quantity</p>
-                        <ul style={{display:"flex", justifyContent:"space-between",alignItems:"center"}}>
+                        <ul style={{display:"flex", justifyContent:"space-between"}}>
                             <li className={classes.borderList}><Button className={classes.btn} onClick={() => {count>0 ? setCount(count-1) : alert("Quantity Can not be negative")}}>
                                     -
                                 </Button>
                             </li>
-                            <li className={classes.borderList}>{count}</li>
+                            <li className={classes.borderList}><Button>{count}</Button></li>
                             <li className={classes.borderList}><Button className={classes.btn} onClick={() => {setCount(count+1)}} >+</Button></li>
                         </ul>
                     </Grid>
                     <Box pl={5}>
-                    <Grid xs={9}>
-                        <p>Select Size</p>
-                        <FormControl component="fieldset">
-                            <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-                                <Box display="flex">
-                                <FormControlLabel value="small" control={<Radio color="primary" />} label="Small" />
-                                <FormControlLabel value="medium" control={<Radio color="primary"/>} label="Medium" />
-                                <FormControlLabel value="large" control={<Radio color="primary"/>} label="Large" />
-                                </Box>
-                            </RadioGroup>
-                        </FormControl>
-                    </Grid>
+                        <Grid xs={9}>
+                            <p>Select Size</p>
+                            <FormControl component="fieldset">
+                                <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
+                                    <Box display="flex" pl={3}>
+                                    <FormControlLabel value="small" control={<Radio color="primary" />} label="Small" />
+                                    <FormControlLabel value="medium" control={<Radio color="primary"/>} label="Medium" />
+                                    <FormControlLabel value="large" control={<Radio color="primary"/>} label="Large" />
+                                    </Box>
+                                </RadioGroup>
+                            </FormControl>
+                        </Grid>
                     </Box>
                 </Box>
                 <Box display="flex">
