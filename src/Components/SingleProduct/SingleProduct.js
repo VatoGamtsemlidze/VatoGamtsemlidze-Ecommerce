@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import {Container} from "@material-ui/core";
 import ProductImages from "./SingleProductComps/ProductImages";
 import ProductDes from "./SingleProductComps/ProductDes";
-import Loader from "../Loader/Loader";
+import Loader from "../components/Loader/Loader";
 import Tabs from './Tabs/Tabs';
 
 const SingleProduct = () => {

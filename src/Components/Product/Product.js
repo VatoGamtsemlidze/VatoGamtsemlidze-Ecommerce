@@ -9,7 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import {Box, Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {Link} from "react-router-dom";
-import Loader from "../Loader/Loader";
+import Loader from "../components/Loader/Loader";
 import {singlePagePath} from "../Routes/Routes";
 
 const useStyles = makeStyles({
