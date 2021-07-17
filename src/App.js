@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import SingleProduct from "./Components/SingleProduct/SingleProduct";
 import MainPage from "./Components/MainPage/MainPage";
 import {singlePagePath} from "./Components/Routes/Routes";
-import AdminPage from "./Components/Admin/AdminPage";
+import Admin from "./Components/Admin/Admin";
 
 function App() {
     return (
@@ -12,7 +12,7 @@ function App() {
                 <Switch>
                     <Route path="/" exact component={MainPage}/>
                     <Route path={singlePagePath} component={SingleProduct}/>
-                    <Route path="/admin" component={AdminPage}/>
+                    <Route path="/admin" component={Admin}/>
                 </Switch>
             </div>
         </BrowserRouter>
