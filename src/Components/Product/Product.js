@@ -11,6 +11,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import {Link} from "react-router-dom";
 import Loader from "../components/Loader/Loader";
 import {singlePagePath} from "../Routes/Routes";
+import PaginationComp from "../components/Pagination";
 
 const useStyles = makeStyles({
     gridClass: {
@@ -43,6 +44,9 @@ const useStyles = makeStyles({
 const Product = ({}) => {
 
     const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [cardsPerPage, setCardPerPage] = useState(6);
+
     const [data, setData] = useState([
         {
             title: '',
@@ -50,8 +54,18 @@ const Product = ({}) => {
             price: '',
         }
     ]);
+
+    const indexOfLastCard = currentPage * cardsPerPage;
+    const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+    const currentCards = data.slice(indexOfFirstCard, indexOfLastCard);
+
+
     const [listOrGrid, setListOrGrid] = useState(true);
     const classes = useStyles();
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
 
     function getProducts(){
         setLoading(true);
@@ -87,12 +101,12 @@ const Product = ({}) => {
                     </div>
                     <p>Label Example</p>
                     <div className="pagination">
-                        <Pagination count={3}/>
+                        <PaginationComp cardsPerPage={cardsPerPage} totalCards={data.length} paginate={paginate}/>
                     </div>
                 </div>
                 {(typeof data != 'undefined') ? (
                     <Grid container className="product-cards">
-                        {data.map((el) => {
+                        {currentCards.map((el) => {
                             return (
                                 <Grid xs={listOrGrid ? 4 : 12} className="card">
                                     <Link to={singlePagePath.replace(':id', el.id)}><Card className={classes.customCard}>
@@ -129,7 +143,7 @@ const Product = ({}) => {
                     </div>
                     <p>Label Example</p>
                     <div className="pagination">
-                        <Pagination count={3}/>
+                        <PaginationComp cardsPerPage={cardsPerPage} totalCards={data.length} paginate={paginate}/>
                     </div>
                 </div>
             </Loader>
