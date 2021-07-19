@@ -32,13 +32,13 @@ export default function AdminModal({rows, onAdd}) {
         },
         onSubmit: values => {
             console.log(values);
-            setData({
-                category: values.category,
-                title: values.title,
-                price: values.price,
-                id: 21
-            })
-            onAdd(data)
+            // setData({
+            //     category: values.category,
+            //     title: values.title,
+            //     price: values.price,
+            //     id: 21
+            // })
+            // onAdd(data)
         },
     });
 
