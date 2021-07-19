@@ -1,38 +1,18 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-import {Button} from "@material-ui/core";
+import React, {useState} from 'react';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import { useFormik } from 'formik';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import {Box} from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
-    modal: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    paper: {
-        backgroundColor: theme.palette.background.paper,
-        border: "none",
-        borderRadius: "5px",
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
-    },
-    modalBtn: {
-        marginLeft: "50%",
-        backgroundColor: "#1266F1",
-        "&:hover": {
-            transitionDuration: "1s",
-            backgroundColor: "#184eaa",
-        }
-    }
-}));
+export default function AdminModal({rows, onAdd}) {
 
-export default function TransitionsModal() {
-    const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
+    const [data, setData] = useState();
 
-    const handleOpen = () => {
+    const handleClickOpen = () => {
         setOpen(true);
     };
 
@@ -40,30 +20,74 @@ export default function TransitionsModal() {
         setOpen(false);
     };
 
+    const formik = useFormik({
+        initialValues: {
+            category: '',
+            title: '',
+            price: '',
+        },
+        onSubmit: values => {
+            console.log(values);
+            // onAdd({
+            //     id: '21',
+            //     category: values.category,
+            //     title: values.title,
+            //     price: values.price
+            // })
+        },
+    });
+
     return (
         <div>
-            <Button type="button" variant="contained" color="primary" className={classes.modalBtn} onClick={handleOpen}>
-                Add Product
+            <Button variant="contained" color="primary" onClick={handleClickOpen}>
+                Add Row
             </Button>
-            <Modal
-                aria-labelledby="transition-modal-title"
-                aria-describedby="transition-modal-description"
-                className={classes.modal}
-                open={open}
-                onClose={handleClose}
-                closeAfterTransition
-                BackdropComponent={Backdrop}
-                BackdropProps={{
-                    timeout: 500,
-                }}
-            >
-                <Fade in={open}>
-                    <div className={classes.paper}>
-                        <h2 id="transition-modal-title">Modal</h2>
-                        <h3 id="transition-modal-description">Formik Would be here</h3>
-                    </div>
-                </Fade>
-            </Modal>
+            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth>
+                <DialogTitle id="form-dialog-title">Add Row</DialogTitle>
+                <DialogContent>
+                    <form onSubmit={formik.handleSubmit}>
+                        <Box>
+                            <label htmlFor="category">Category</label>
+                            <input
+                                id="category"
+                                name="category"
+                                type="text"
+                                onChange={formik.handleChange}
+                                value={formik.values.category}
+                            />
+                        </Box>
+                        <Box pt={1}>
+                            <label htmlFor="title">Title</label>
+                            <input
+                                id="title"
+                                name="title"
+                                type="text"
+                                onChange={formik.handleChange}
+                                value={formik.values.title}
+                            />
+                        </Box>
+                        <Box pt={1}>
+                            <label htmlFor="price">Price</label>
+                            <input
+                                id="price"
+                                name="price"
+                                type="number"
+                                onChange={formik.handleChange}
+                                value={formik.values.price}
+                            />
+                        </Box>
+                        <Box pt={1}>
+                            <Button onClick={handleClose} type="submit" color="primary" variant="contained">
+                                Add Row
+                            </Button>
+                        </Box>
+                    </form>
+                </DialogContent>
+                <DialogActions>
+
+
+                </DialogActions>
+            </Dialog>
         </div>
     );
 }

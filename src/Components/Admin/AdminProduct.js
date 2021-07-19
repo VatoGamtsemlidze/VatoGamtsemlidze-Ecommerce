@@ -60,6 +60,10 @@ export default function AdminProduct(){
     return (
         <Box pt={5}>
             <Loader isLoading={loading}>
+                <AdminModal rows={rows} onAdd={(newRow) => setRows({
+                    ...rows,
+                    newRow
+                })}/>
                 <TableContainer component={Paper} className={classes.tableCont}>
                     <Table className={classes.table}>
                         <TableHead>
@@ -84,7 +88,6 @@ export default function AdminProduct(){
                         </TableBody>
                     </Table>
                 </TableContainer>
-                <AdminModal/>
             </Loader>
         </Box>
     );

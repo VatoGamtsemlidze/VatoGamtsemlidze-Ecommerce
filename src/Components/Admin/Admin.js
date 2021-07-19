@@ -42,7 +42,7 @@ function Admin() {
 
                 </Drawer>
                 <Switch>
-                    <Route exact path="/admin_product">
+                    <Route exact path="/admin_product"> {/* or /admin/admin_product ? */}
                         <AdminProduct/>
                     </Route>
                     <Route  path="/users">
