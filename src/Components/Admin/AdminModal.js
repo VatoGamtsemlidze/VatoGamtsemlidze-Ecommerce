@@ -39,9 +39,22 @@ export default function AdminModal({rows, onAdd}) {
             //     id: 21
             // })
             // onAdd(data)
+            fetch("https://fakestoreapi.com/products", {
+                method: "POST",
+                body: JSON.stringify({
+                    category: values.category,
+                    description: values.description,
+                    title: values.title,
+                    price: values.price,
+                }),
+            })
+                .then((res) => res.json())
+                .then((json) => {
+                    console.log(json);
+                })
+                .catch((err) => console.log(err))
         },
     });
-
     return (
         <div>
             <Button variant="contained" color="primary" onClick={handleClickOpen}>

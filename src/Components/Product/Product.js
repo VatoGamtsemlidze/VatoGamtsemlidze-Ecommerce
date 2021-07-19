@@ -1,51 +1,23 @@
 import React, {useEffect, useState} from 'react';
 import './Product.css'
-import {Pagination} from "@material-ui/lab";
 import ViewListIcon from '@material-ui/icons/ViewList';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import {Box, Grid} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
 import {Link} from "react-router-dom";
 import Loader from "../components/Loader/Loader";
 import {singlePagePath} from "../Routes/Routes";
 import PaginationComp from "../components/Pagination";
+import {useStyles} from "./ProductStyles";
 
-const useStyles = makeStyles({
-    gridClass: {
-        display: "flex",
-        flexDirection: "column",
-    },
-    listClass: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-    },
-    customCard: {
-        border: "none",
-        boxShadow: "none",
-    },
-    cardImg: {
-        marginTop: "-10px",
-        borderRadius: "5px",
-        "&:hover": {
-            transitionDuration: "2s",
-            transform: "scale(1.25)"
-        },
-    },
-    description: {
-        fontSize: "13px",
-        color: "gray",
-    }
-})
 
 const Product = ({}) => {
 
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [cardsPerPage, setCardPerPage] = useState(6);
+    const [cardsPerPage] = useState(6);
 
     const [data, setData] = useState([
         {
