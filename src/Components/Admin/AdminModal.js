@@ -10,7 +10,11 @@ import {Box} from "@material-ui/core";
 export default function AdminModal({rows, onAdd}) {
 
     const [open, setOpen] = useState(false);
-    const [data, setData] = useState();
+    const [data, setData] = useState({
+        category: '',
+        title: '',
+        price: '',
+    });
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -28,12 +32,13 @@ export default function AdminModal({rows, onAdd}) {
         },
         onSubmit: values => {
             console.log(values);
-            // onAdd({
-            //     id: '21',
-            //     category: values.category,
-            //     title: values.title,
-            //     price: values.price
-            // })
+            setData({
+                category: values.category,
+                title: values.title,
+                price: values.price,
+                id: 21
+            })
+            onAdd(data)
         },
     });
 
@@ -78,15 +83,11 @@ export default function AdminModal({rows, onAdd}) {
                         </Box>
                         <Box pt={1}>
                             <Button onClick={handleClose} type="submit" color="primary" variant="contained">
-                                Add Row
+                                Add
                             </Button>
                         </Box>
                     </form>
                 </DialogContent>
-                <DialogActions>
-
-
-                </DialogActions>
             </Dialog>
         </div>
     );
