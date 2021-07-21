@@ -155,6 +155,9 @@ export default function TopBar(background) {
                         <IconButton>
                             <p><a>Contact</a></p>
                         </IconButton>
+                        <Link to="/sign-in"><IconButton>
+                            <p><a>Sign In</a></p>
+                        </IconButton></Link>
                         <Link to="/admin"><IconButton
                             edge="end"
                             aria-label="account of current user"

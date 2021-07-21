@@ -4,6 +4,7 @@ import SingleProduct from "./Components/SingleProduct/SingleProduct";
 import MainPage from "./Components/MainPage/MainPage";
 import {singlePagePath} from "./Components/Routes/Routes";
 import Admin from "./Components/Admin/Admin";
+import SignIn from "./Components/SignIn/SignIn";
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                     <Route path="/" exact component={MainPage}/>
                     <Route path={singlePagePath} component={SingleProduct}/>
                     <Route path="/admin" component={Admin}/>
+                    <Route path="/sign-in" component={SignIn}/>
                 </Switch>
             </div>
         </BrowserRouter>
