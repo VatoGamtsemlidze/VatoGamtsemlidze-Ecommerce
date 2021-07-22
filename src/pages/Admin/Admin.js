@@ -5,7 +5,7 @@ import AdminProduct from "./AdminProduct";
 import AdminUsers from "./AdminUsers";
 import AdminCategories from "./AdminCategories";
 import {useStyles} from "./AdminStyles";
-import EditedBar from "../TopBar/EditedBar";
+import EditedBar from "../../layouts/TopBar/EditedBar";
 
 function Admin() {
     const classes = useStyles();

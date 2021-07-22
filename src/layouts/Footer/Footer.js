@@ -5,7 +5,7 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 import './Footer.css'
-import SocialAd from "../SocialAd/SocialAd";
+import SocialAd from "../../Components/SocialAd/SocialAd";
 
 const Footer = () => {
     return (

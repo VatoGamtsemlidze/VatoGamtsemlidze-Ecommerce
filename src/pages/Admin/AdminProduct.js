@@ -8,7 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import {Box} from "@material-ui/core";
-import Loader from "../components/Loader/Loader";
+import Loader from "../../Components/Loader/Loader";
 import AdminModal from './AdminModal';
 
 const useStyles = makeStyles({

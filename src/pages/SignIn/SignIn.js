@@ -1,13 +1,13 @@
 import React from 'react';
-import EditedBar from '../TopBar/EditedBar';
-import Footer from "../Footer/Footer";
+import EditedBar from '../../layouts/TopBar/EditedBar';
+import Footer from "../../layouts/Footer/Footer";
 import {Box, Button, Checkbox, FormControlLabel, TextField} from "@material-ui/core";
 import {useFormik} from "formik";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebook, faTwitter, faLinkedin, faGithub} from "@fortawesome/free-brands-svg-icons";
 import {useStyles} from "./SignInStyle";
-
+import {signUpPath} from "../../Components/Routes/Routes";
 
 const SignIn = () => {
 
@@ -19,10 +19,10 @@ const SignIn = () => {
             remember: false
         },
         onSubmit: values => {
-            fetch('https://fakestoreapi.com/auth/login',{
+            fetch('http://159.65.126.180/api/auth/login',{
                 method:'POST',
                 body:JSON.stringify({
-                    username: values.email,
+                    email: values.email,
                     password: values.password
                 })
             })
@@ -72,7 +72,7 @@ const SignIn = () => {
                     </Box>
                     <Box display="flex" alignItems="center" flexDirection="column">
                         <Box display="flex" justifyContent="center" pt={3}>
-                            <a className={classes.customAtag} >Not a member? <Link to="/sign-up"><a className={classes.aTag}>Register</a></Link></a>
+                            <a className={classes.customAtag} >Not a member? <Link to={signUpPath}><a className={classes.aTag}>Register</a></Link></a>
                         </Box>
                         <Box pt={2}>
                             <a className={classes.customAtag}>or sign in with:</a>

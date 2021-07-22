@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import EditedBar from "../TopBar/EditedBar";
-import Footer from "../Footer/Footer";
+import EditedBar from "../../layouts/TopBar/EditedBar";
+import Footer from "../../layouts/Footer/Footer";
 import Title from "./SingleProductComps/Title";
 import { useParams } from 'react-router-dom';
 import Grid from "@material-ui/core/Grid";
 import {Container} from "@material-ui/core";
 import ProductImages from "./SingleProductComps/ProductImages";
 import ProductDes from "./SingleProductComps/ProductDes";
-import Loader from "../components/Loader/Loader";
+import Loader from "../../Components/Loader/Loader";
 import Tabs from './Tabs/Tabs';
 
 const SingleProduct = () => {

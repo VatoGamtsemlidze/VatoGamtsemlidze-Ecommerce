@@ -5,13 +5,11 @@ import {Box, Button, Checkbox, FormControl, FormControlLabel, FormLabel, Radio, 
 import SearchIcon from "@material-ui/icons/Search";
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
-import CircleCheckedFilled from '@material-ui/icons/CheckCircle';
-import CircleUnchecked from '@material-ui/icons/RadioButtonUnchecked';
 import Grid from '@material-ui/core/Grid';
 import Slider from '@material-ui/core/Slider';
 import Circles from "./Circles";
 
-const Filter = (filter) => {
+const Filter = () => {
 
     const [moreSize, setMoreSize] = useState(false);
     const [value, setValue] = React.useState('female');

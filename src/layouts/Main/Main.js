@@ -1,5 +1,5 @@
 import React from 'react';
-import Product from "../Product/Product";
+import Product from "../../pages/Product/Product";
 import Filter from "../Filter/Filter";
 import {Container, Grid} from "@material-ui/core";
 

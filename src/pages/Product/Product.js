@@ -7,9 +7,9 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import {Box, Grid} from "@material-ui/core";
 import {Link} from "react-router-dom";
-import Loader from "../components/Loader/Loader";
-import {singlePagePath} from "../Routes/Routes";
-import PaginationComp from "../components/Pagination";
+import Loader from "../../Components/Loader/Loader";
+import {singlePagePath} from "../../Components/Routes/Routes";
+import PaginationComp from "../../Components/Pagination";
 import {useStyles} from "./ProductStyles";
 
 

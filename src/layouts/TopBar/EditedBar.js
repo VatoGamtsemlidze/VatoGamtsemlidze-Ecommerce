@@ -13,7 +13,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import {Link} from "react-router-dom";
-
+import {adminPath} from "../../Components/Routes/Routes";
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -170,7 +170,7 @@ export default function TopBar(background) {
                         <IconButton>
                             <p><a>Contact</a></p>
                         </IconButton>
-                        <Link to="/admin">
+                        <Link to={adminPath}>
                             <IconButton
                                 edge="end"
                                 aria-label="account of current user"

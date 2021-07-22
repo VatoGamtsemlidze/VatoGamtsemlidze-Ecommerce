@@ -1,8 +1,8 @@
 import React from 'react';
-import TopBar from "../TopBar/TopBar";
-import ShopPhoto from "../ShopPhoto/ShopPhoto";
-import Main from "../Main/Main";
-import Footer from "../Footer/Footer";
+import TopBar from "../../layouts/TopBar/TopBar";
+import ShopPhoto from "../../Components/ShopPhoto/ShopPhoto";
+import Main from "../../layouts/Main/Main";
+import Footer from "../../layouts/Footer/Footer";
 
 const MainPage = () => {
     return (
