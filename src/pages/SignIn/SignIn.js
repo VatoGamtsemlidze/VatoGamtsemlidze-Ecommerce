@@ -21,6 +21,10 @@ const SignIn = () => {
         onSubmit: values => {
             fetch('http://159.65.126.180/api/auth/login',{
                 method:'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'accept': 'application/json'
+                },
                 body:JSON.stringify({
                     email: values.email,
                     password: values.password
@@ -28,6 +32,9 @@ const SignIn = () => {
             })
                 .then(res=>res.json())
                 .then(json=>console.log(json))
+                .catch(err => {
+                    console.log(err)
+                })
         },
     })
 

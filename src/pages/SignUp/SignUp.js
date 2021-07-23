@@ -18,15 +18,19 @@ const SignUp = () => {
             lastName: '',
             email: '',
             password: '',
-            phoneNumber: '',
+            password_confirmation: '',
             subscribe: false
         },
         onSubmit: values => {
             console.log(values)
             fetch('http://159.65.126.180/api/register',{
                 method:'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'accept': 'application/json'
+                },
                 body:JSON.stringify({
-                    name: values.name,
+                    name: values.firstName+" "+values.lastName,
                     email: values.email,
                     password: values.password,
                     password_confirmation: values.password
@@ -91,16 +95,16 @@ const SignUp = () => {
                         </Box>
                         <Box pt={3}>
                             <TextField
-                                type="number"
-                                name="phoneNumber"
+                                type="password"
+                                name="password_confirmation"
                                 variant="outlined"
-                                label="Phone number"
+                                label="Confirm password"
                                 onChange={formik.handleChange}
-                                value={formik.values.phoneNumber}
+                                value={formik.values.password_confirmation}
                                 size="small"
                                 fullWidth
                             />
-                            <small className={classes.small}>Optional - for two step authentication</small>
+                            <small className={classes.small}>Repeat password</small>
                         </Box>
                     </Box>
                     <Box pt={3} display="flex" justifyContent="center">
