@@ -1,0 +1,21 @@
+.footer-main{
+    background-color: #2E2E2E
+}
+.footer-main h5{
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+}
+.footer-main p{
+    color: white;
+    text-transform: capitalize;
+}
+.footer-main li a{
+    color: white;
+    text-transform: capitalize;
+    font-size: 14px;
+    display: flex;
+}
+.footer-main li a p{
+    margin-top: -1px;
+}

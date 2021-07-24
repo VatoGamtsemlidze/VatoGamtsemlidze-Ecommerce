@@ -1,0 +1,32 @@
+.product-main{
+  .product-control{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    p{
+      font-size: 15px;
+      text-transform: capitalize;
+      color: #474747;
+      font-weight: 300;
+      margin: 0;
+    }
+    .pagination{
+      margin-top: -5px;
+    }
+  }
+  .product-cards{
+    .card{
+      width: 100%;
+      min-height: 300px;
+      h2{
+        text-align: center;
+      }
+      p{
+        text-align: center;
+        color: black;
+        font-size: 19px;
+        font-weight: 550;
+      }
+    }
+  }
+}

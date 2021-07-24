@@ -1,9 +1,11 @@
 import './App.css';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import SingleProduct from "./Components/SingleProduct/SingleProduct";
-import MainPage from "./Components/MainPage/MainPage";
-import {singlePagePath} from "./Components/Routes/Routes";
-import AdminPage from "./Components/Admin/AdminPage";
+import SingleProduct from "./pages/SingleProduct/SingleProduct";
+import MainPage from "./pages/MainPage/MainPage";
+import {singlePagePath, signInPath, signUpPath, adminPath} from "./Components/Routes/Routes";
+import Admin from "./pages/Admin/Admin";
+import SignIn from "./pages/SignIn/SignIn";
+import SignUp from "./pages/SignUp/SignUp";
 
 function App() {
     return (
@@ -12,7 +14,9 @@ function App() {
                 <Switch>
                     <Route path="/" exact component={MainPage}/>
                     <Route path={singlePagePath} component={SingleProduct}/>
-                    <Route path="/admin" component={AdminPage}/>
+                    <Route path={adminPath} component={Admin}/>
+                    <Route path={signInPath} component={SignIn}/>
+                    <Route path={signUpPath} component={SignUp}/>
                 </Switch>
             </div>
         </BrowserRouter>

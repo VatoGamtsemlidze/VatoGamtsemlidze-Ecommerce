@@ -1,0 +1,30 @@
+.product-main .product-control {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.product-main .product-control p {
+  font-size: 15px;
+  text-transform: capitalize;
+  color: #474747;
+  font-weight: 300;
+  margin: 0;
+}
+.product-main .product-control .pagination {
+  margin-top: -5px;
+}
+.product-main .product-cards .card {
+  width: 100%;
+  min-height: 300px;
+}
+.product-main .product-cards .card h2 {
+  text-align: center;
+}
+.product-main .product-cards .card p {
+  text-align: center;
+  color: black;
+  font-size: 19px;
+  font-weight: 550;
+}
+
+/*# sourceMappingURL=Product.css.map */

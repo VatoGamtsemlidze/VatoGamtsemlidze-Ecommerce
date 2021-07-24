@@ -1,0 +1,75 @@
+div a {
+  color: gray;
+  text-decoration: none;
+}
+div p {
+  text-transform: uppercase;
+  font-size: 13px;
+  color: gray;
+}
+div p a {
+  color: #666666;
+  font-weight: 500;
+}
+div p a:hover {
+  transition-duration: 0.5s;
+  color: #2a2a2a;
+}
+div ul {
+  list-style: none;
+  margin-left: -40px;
+}
+div ul li {
+  padding-top: 5px;
+}
+div ul a {
+  text-transform: uppercase;
+  font-size: 13px;
+}
+div .main-filter h2 {
+  font-weight: 500;
+  color: #444444;
+}
+div .main-filter h4 {
+  font-weight: 500;
+  color: #444444;
+}
+div .main-filter ul li {
+  color: gray;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+div .main-filter .review-cont ul li {
+  padding-top: 7px;
+}
+div .main-filter .review-cont ul li a {
+  color: #4141e5;
+}
+div .main-filter .price-filter #outlined-basic {
+  width: 150px;
+}
+div .main-filter .price-filter .price-input {
+  display: flex;
+  max-width: 380px;
+  justify-content: space-between;
+}
+div .main-filter .price-filter .price-slider {
+  max-width: 400px;
+}
+div .main-filter .size-color-cont .size-cont ul li {
+  padding: 0;
+}
+div .main-filter .size-color-cont .drop-down-size button {
+  border: none;
+  cursor: pointer;
+  color: gray;
+  text-transform: uppercase;
+  font-weight: 600;
+  background-color: transparent;
+  font-size: 11px;
+}
+div .main-filter .size-color-cont .drop-down-size button:hover {
+  color: #454545;
+}
+
+/*# sourceMappingURL=Filter.css.map */
