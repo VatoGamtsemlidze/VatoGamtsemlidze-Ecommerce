@@ -1,7 +1,7 @@
 import React from 'react';
 import {Pagination} from "@material-ui/lab";
 
-const PaginationComp = ({cardsPerPage, totalCards, paginate}) => {
+const PaginationComp = ({cardsPerPage, totalCards, paginate, page}) => {
 
     const pageNumbers = [];
 
@@ -11,7 +11,7 @@ const PaginationComp = ({cardsPerPage, totalCards, paginate}) => {
 
     return (
         <div>
-            <Pagination onChange={(event, page) => paginate(page)} count={pageNumbers.length}/>
+            <Pagination page={page} onChange={(event, page) => paginate(page)} count={pageNumbers.length}/>
         </div>
     );
 };

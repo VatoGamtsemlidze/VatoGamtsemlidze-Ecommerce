@@ -5,19 +5,22 @@ import AdminProduct from "./AdminProduct";
 import AdminUsers from "./AdminUsers";
 import AdminCategories from "./AdminCategories";
 import {useStyles} from "./AdminStyles";
+import TopBar from "../../layouts/TopBar/TopBar";
 
 function Admin() {
     const classes = useStyles();
     return (
         <Router>
+            <TopBar/>
             <div style={{display:'flex'}}>
                 <Drawer
-                    style={{ width: '220px' }}
+                    style={{ width: '220px'}}
                     variant="persistent"
                     anchor="left"
                     open={true}
                     classes={{ paper: classes.drawerPaper }}
                 >
+                   <Box pt={5}>
                     <List>
                         <Link to="/admin_product" className={classes.link}>
                             <ListItem button>
@@ -35,7 +38,7 @@ function Admin() {
                             </ListItem>
                         </Link>
                     </List>
-
+                   </Box>
                 </Drawer>
                 <Switch>
                     <Route exact path="/admin_product">

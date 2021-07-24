@@ -49,11 +49,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TopBar() {
     const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
     const [scrolled, setScrolled] = useState(0);
     const path = useLocation();
     const [edited, setEdited] = useState(false);
+    const [adminStyle, setAdminStyle] = useState(false);
 
     useEffect(() => {
         window.onscroll = () => {
@@ -62,6 +63,9 @@ export default function TopBar() {
         if(path.pathname != "/"){
             console.log('in sign in')
             setEdited(true);
+        }
+        if(path.pathname == '/admin'){
+            setAdminStyle(true)
         }
     }, []);
 
@@ -124,7 +128,7 @@ export default function TopBar() {
 
     return (
         <div className={classes.grow}>
-            <AppBar position={edited ? "relative" : "fixed"} className={classes.appBar} style={{background: scrolled>0 ? "white" : "transparent", boxShadow: "none",}}>
+            <AppBar position={edited ? "relative" : "fixed"} className={classes.appBar} style={{background: scrolled>0 ? "white" : "transparent", boxShadow: "none", backgroundColor: adminStyle ? "#b8b8b8" : "transparent"}}>
                 <Toolbar>
                     <IconButton
                         edge="start"

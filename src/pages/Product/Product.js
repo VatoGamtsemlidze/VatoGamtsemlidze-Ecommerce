@@ -9,7 +9,7 @@ import {Box, Grid} from "@material-ui/core";
 import {Link} from "react-router-dom";
 import Loader from "../../Components/Loader/Loader";
 import {singlePagePath} from "../../routes";
-import PaginationComp from "../../Components/Pagination";
+import PaginationComp from "../../Components/pagination";
 import {useStyles} from "./ProductStyles";
 
 
@@ -72,7 +72,7 @@ const Product = ({}) => {
                     </div>
                     <p>Label Example</p>
                     <div className="pagination">
-                        <PaginationComp cardsPerPage={cardsPerPage} totalCards={data.length} paginate={paginate}/>
+                        <PaginationComp page={currentPage} cardsPerPage={cardsPerPage} totalCards={data.length} paginate={paginate}/>
                     </div>
                 </div>
                 {(typeof data != 'undefined') ? (
@@ -114,7 +114,7 @@ const Product = ({}) => {
                     </div>
                     <p>Label Example</p>
                     <div className="pagination">
-                        <PaginationComp cardsPerPage={cardsPerPage} totalCards={data.length} paginate={paginate}/>
+                        <PaginationComp page={currentPage} cardsPerPage={cardsPerPage} totalCards={data.length} paginate={paginate}/>
                     </div>
                 </div>
             </Loader>

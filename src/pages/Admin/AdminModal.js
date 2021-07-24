@@ -57,7 +57,7 @@ export default function AdminModal({rows, onAdd}) {
     });
     return (
         <div>
-            <Button variant="contained" color="primary" onClick={handleClickOpen}>
+            <Button variant="contained" style={{background: "#1266F1", color: "white"}} onClick={handleClickOpen}>
                 Add Row
             </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth>
