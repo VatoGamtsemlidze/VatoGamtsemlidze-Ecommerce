@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import EditedBar from "../../layouts/TopBar/EditedBar";
 import Footer from "../../layouts/Footer/Footer";
 import Title from "./SingleProductComps/Title";
 import { useParams } from 'react-router-dom';
@@ -9,6 +8,7 @@ import ProductImages from "./SingleProductComps/ProductImages";
 import ProductDes from "./SingleProductComps/ProductDes";
 import Loader from "../../Components/Loader/Loader";
 import Tabs from './Tabs/Tabs';
+import TopBar from "../../layouts/TopBar/TopBar";
 
 const SingleProduct = () => {
 
@@ -47,7 +47,7 @@ const SingleProduct = () => {
 
     return (
         <Grid>
-            <EditedBar/>
+            <TopBar/>
             <Title/>
             <Loader isLoading={loading}>
                 <Container maxWidth="lg" style={{display: "flex", paddingTop:"50px"}}>

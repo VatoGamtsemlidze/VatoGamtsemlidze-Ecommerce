@@ -1,11 +1,11 @@
 import React from 'react';
 import Footer from "../../layouts/Footer/Footer";
-import EditedBar from "../../layouts/TopBar/EditedBar"
 import {Box, Button, Checkbox, FormControlLabel, TextField} from "@material-ui/core";
 import {useFormik} from "formik";
 import {useStyles} from "../SignIn/SignStyle";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebook, faGithub, faLinkedin, faTwitter} from "@fortawesome/free-brands-svg-icons";
+import TopBar from "../../layouts/TopBar/TopBar";
 
 const SignUp = () => {
 
@@ -68,7 +68,7 @@ const SignUp = () => {
 
     return (
         <div>
-            <EditedBar/>
+            <TopBar/>
             <h2 className={classes.title}>Sign up</h2>
             <Box className={classes.signupMain}>
                 <form onSubmit={formik.handleSubmit}>

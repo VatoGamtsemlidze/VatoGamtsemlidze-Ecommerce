@@ -12,8 +12,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import {Link} from "react-router-dom";
-import {adminPath, signInPath} from "../../Components/Routes/Routes";
+import {Link, useLocation} from "react-router-dom";
+import {adminPath, signInPath} from "../../routes";
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -47,19 +47,24 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function TopBar(background) {
+export default function TopBar() {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
     const [scrolled, setScrolled] = useState(0);
+    const path = useLocation();
+    const [edited, setEdited] = useState(false);
 
     useEffect(() => {
         window.onscroll = () => {
             setScrolled(window.pageYOffset);
         }
+        if(path.pathname != "/"){
+            console.log('in sign in')
+            setEdited(true);
+        }
     }, []);
 
-    const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
     const handleProfileMenuOpen = (event) => {
@@ -68,11 +73,6 @@ export default function TopBar(background) {
 
     const handleMobileMenuClose = () => {
         setMobileMoreAnchorEl(null);
-    };
-
-    const handleMenuClose = () => {
-        setAnchorEl(null);
-        handleMobileMenuClose();
     };
 
     const handleMobileMenuOpen = (event) => {
@@ -124,7 +124,7 @@ export default function TopBar(background) {
 
     return (
         <div className={classes.grow}>
-            <AppBar position="fixed" className={classes.appBar} style={{background: scrolled>0 ? "white" : "transparent", boxShadow: "none",}}>
+            <AppBar position={edited ? "relative" : "fixed"} className={classes.appBar} style={{background: scrolled>0 ? "white" : "transparent", boxShadow: "none",}}>
                 <Toolbar>
                     <IconButton
                         edge="start"
@@ -133,31 +133,38 @@ export default function TopBar(background) {
                         aria-label="open drawer"
 
                     >
-                        <MenuIcon style={{color: scrolled ? "gray" : "white"}}/>
+                        <MenuIcon style={{color: scrolled || edited ? "gray" : "white"}}/>
                     </IconButton>
-                    <Typography className={classes.title} variant="h6" noWrap style={{color: scrolled ? "gray" : "white"}}>
+                    {edited ? <Link to="/">
+                        <Typography className={classes.title} variant="h6" noWrap style={{color: scrolled || edited ? "gray" : "white"}}>
+                            Material-UI
+                        </Typography>
+                    </Link>
+                        :
+                        <Typography className={classes.title} variant="h6" noWrap style={{color: scrolled || edited ? "gray" : "white"}}>
                         Material-UI
-                    </Typography>
+                        </Typography>
+                    }
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
                         <IconButton aria-label="show 4 new mails" color="inherit">
                             <Badge badgeContent={4} color="secondary">
-                                <MailIcon style={{color: scrolled ? "gray" : "white"}}/>
+                                <MailIcon style={{color: scrolled || edited ? "gray" : "white"}}/>
                             </Badge>
                         </IconButton>
                         <IconButton aria-label="show 17 new notifications" color="inherit">
                             <Badge badgeContent={17} color="secondary">
-                                <NotificationsIcon style={{color: scrolled ? "gray" : "white"}}/>
+                                <NotificationsIcon style={{color: scrolled || edited ? "gray" : "white"}}/>
                             </Badge>
                         </IconButton>
                         <IconButton>
-                            <p><a href="#">Shop</a></p>
+                            <p><a href="#" style={{color: scrolled || edited ? "gray" : "white"}}>Shop</a></p>
                         </IconButton>
                         <IconButton>
-                            <p><a>Contact</a></p>
+                            <p><a style={{color: scrolled || edited ? "gray" : "white"}}>Contact</a></p>
                         </IconButton>
                         <Link to={signInPath}><IconButton>
-                            <p><a>Sign In</a></p>
+                            <p><a style={{color: scrolled || edited ? "gray" : "white"}}>Sign In</a></p>
                         </IconButton></Link>
                         <Link to={adminPath}><IconButton
                             edge="end"
@@ -167,7 +174,7 @@ export default function TopBar(background) {
                             onClick={handleProfileMenuOpen}
                             color="inherit"
                         >
-                            <AccountCircle style={{color: scrolled ? "gray" : "white", marginTop:"7px"}}/>
+                            <AccountCircle style={{color: scrolled || edited ? "gray" : "white", marginTop:"7px"}}/>
                         </IconButton></Link>
                     </div>
                     <div className={classes.sectionMobile}>
@@ -178,7 +185,7 @@ export default function TopBar(background) {
                             onClick={handleMobileMenuOpen}
                             color="inherit"
                         >
-                            <MoreIcon />
+                            <MoreIcon style={{color: scrolled || edited ? "gray" : "white", marginTop:"7px"}}/>
                         </IconButton>
                     </div>
                 </Toolbar>

@@ -1,5 +1,4 @@
 import React, {useState } from 'react';
-import EditedBar from '../../layouts/TopBar/EditedBar';
 import Footer from "../../layouts/Footer/Footer";
 import {Box, Button, Checkbox, FormControlLabel, TextField} from "@material-ui/core";
 import {useFormik} from "formik";
@@ -7,8 +6,9 @@ import {Link, useParams} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebook, faTwitter, faLinkedin, faGithub} from "@fortawesome/free-brands-svg-icons";
 import {useStyles} from "./SignStyle";
-import {signUpPath} from "../../Components/Routes/Routes";
+import {signUpPath} from "../../routes";
 import Loader from "../../Components/Loader/Loader";
+import TopBar from "../../layouts/TopBar/TopBar";
 
 const SignIn = () => {
     
@@ -68,7 +68,7 @@ const SignIn = () => {
 
     return (
         <div>
-            <EditedBar/>
+            <TopBar/>
             <h2 className={classes.title}>Sign in</h2>
             <Box className={classes.main}>
                 <Loader isLoading={loading}>

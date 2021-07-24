@@ -5,7 +5,6 @@ import AdminProduct from "./AdminProduct";
 import AdminUsers from "./AdminUsers";
 import AdminCategories from "./AdminCategories";
 import {useStyles} from "./AdminStyles";
-import EditedBar from "../../layouts/TopBar/EditedBar";
 
 function Admin() {
     const classes = useStyles();
@@ -35,14 +34,11 @@ function Admin() {
                                 <ListItemText primary={"Categories"} />
                             </ListItem>
                         </Link>
-                        {/*<Link to="/">*/}
-                        {/*    <Button><HomeIcon/></Button>*/}
-                        {/*</Link>*/}
                     </List>
 
                 </Drawer>
                 <Switch>
-                    <Route exact path="/admin_product"> {/* or /admin/admin_product ? */}
+                    <Route exact path="/admin_product">
                         <AdminProduct/>
                     </Route>
                     <Route  path="/users">
