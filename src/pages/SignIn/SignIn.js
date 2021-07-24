@@ -1,24 +1,42 @@
-import React from 'react';
+import React, {useState } from 'react';
 import EditedBar from '../../layouts/TopBar/EditedBar';
 import Footer from "../../layouts/Footer/Footer";
 import {Box, Button, Checkbox, FormControlLabel, TextField} from "@material-ui/core";
 import {useFormik} from "formik";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebook, faTwitter, faLinkedin, faGithub} from "@fortawesome/free-brands-svg-icons";
-import {useStyles} from "./SignInStyle";
+import {useStyles} from "./SignStyle";
 import {signUpPath} from "../../Components/Routes/Routes";
+import Loader from "../../Components/Loader/Loader";
 
 const SignIn = () => {
-
+    
     const classes = useStyles();
+    const [loading, setLoading] = useState(false);
+
+    const validate = values => {
+        let errors = {};
+
+        if(!values.email){
+            errors.email = 'Please enter your email'
+        }
+        if(!values.password){
+            errors.password = 'Enter Password'
+        }
+        return errors;
+    }
+
     const formik = useFormik({
         initialValues: {
             email: '',
             password: '',
             remember: false
         },
+        validate,
         onSubmit: values => {
+
+            setLoading(true);
             fetch('http://159.65.126.180/api/auth/login',{
                 method:'POST',
                 headers: {
@@ -31,10 +49,20 @@ const SignIn = () => {
                 })
             })
                 .then(res=>res.json())
-                .then(json=>console.log(json))
+                .then(json=> {
+                    console.log(json);
+                    if(json.errors){
+                        alert("error occured")
+                    }else{
+                        localStorage.setItem('user', json);
+                        console.log("success")
+                        window.location.href = "/"
+                    }
+                })
                 .catch(err => {
                     console.log(err)
                 })
+                .finally(() => setLoading(false))
         },
     })
 
@@ -43,6 +71,7 @@ const SignIn = () => {
             <EditedBar/>
             <h2 className={classes.title}>Sign in</h2>
             <Box className={classes.main}>
+                <Loader isLoading={loading}>
                 <form onSubmit={formik.handleSubmit}>
                     <Box pt={2}>
                         <TextField
@@ -54,6 +83,7 @@ const SignIn = () => {
                             value={formik.values.email}
                             fullWidth
                         />
+                        {formik.errors.email && formik.touched.email ? <div className={classes.error}>{formik.errors.email}</div> : null}
                     </Box>
                     <Box pt={2}>
                         <TextField
@@ -65,6 +95,7 @@ const SignIn = () => {
                             value={formik.values.password}
                             fullWidth
                         />
+                        {formik.errors.password && formik.touched.email ? <div className={classes.error}>{formik.errors.password}</div> : null}
                     </Box>
                     <Box display="flex" justifyContent="space-between" pt={1}>
                         <FormControlLabel
@@ -93,6 +124,7 @@ const SignIn = () => {
                         </Box>
                     </Box>
                 </form>
+                </Loader>
             </Box>
             <Footer/>
         </div>

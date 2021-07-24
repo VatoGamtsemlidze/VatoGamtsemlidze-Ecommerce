@@ -44,7 +44,6 @@ const Product = ({}) => {
         fetch('https://fakestoreapi.com/products')
             .then(resp => resp.json())
             .then(dt => {
-                console.log(dt);
                 setData(dt);
             })
             .catch(error => {

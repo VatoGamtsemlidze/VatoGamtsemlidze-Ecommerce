@@ -22,6 +22,11 @@ export const useStyles = makeStyles({
         maxWidth: "700px",
         paddingTop: "30px"
     },
+    signupMain: {
+        margin: "auto",
+        maxWidth: "500px",
+        paddingTop: "30px"
+    },
     textField: {
         paddingTop: "5px"
     },
@@ -44,5 +49,12 @@ export const useStyles = makeStyles({
     icons: {
         padding: "0 7px",
         fontSize: "30px"
+    },
+    small: {
+        color: "#6C757D"
+    },
+    error: {
+        color: 'red',
+        fontSize: "13px"
     }
 })

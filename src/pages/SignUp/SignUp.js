@@ -3,14 +3,33 @@ import Footer from "../../layouts/Footer/Footer";
 import EditedBar from "../../layouts/TopBar/EditedBar"
 import {Box, Button, Checkbox, FormControlLabel, TextField} from "@material-ui/core";
 import {useFormik} from "formik";
-import {useStyles} from "./SignUpStyle";
-import {Link} from "react-router-dom";
+import {useStyles} from "../SignIn/SignStyle";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebook, faGithub, faLinkedin, faTwitter} from "@fortawesome/free-brands-svg-icons";
 
 const SignUp = () => {
 
     const classes = useStyles();
+
+    const validate = values => {
+        let errors = {};
+        if(!values.firstName){
+            errors.firstName = 'Required';
+        }
+        if(!values.lastName){
+            errors.lastName = 'Required';
+        }
+        if(!values.email){
+            errors.email = 'Required';
+        }
+        if(values.password.length < 6){
+            errors.password = 'Password must be at least 6 elements long';
+        }
+        if(values.password_confirmation != values.password){
+            errors.password_confirmation = 'Passwords must match';
+        }
+        return errors;
+    }
 
     const formik = useFormik({
         initialValues: {
@@ -21,6 +40,7 @@ const SignUp = () => {
             password_confirmation: '',
             subscribe: false
         },
+        validate,
         onSubmit: values => {
             console.log(values)
             fetch('http://159.65.126.180/api/register',{
@@ -37,7 +57,12 @@ const SignUp = () => {
                 })
             })
                 .then(res=>res.json())
-                .then(json=>console.log(json))
+                .then(json=> {
+                    console.log(json)
+                    if(!json.errors){
+                        window.location.href = "/";
+                    }
+                })
         }
     })
 
@@ -45,27 +70,33 @@ const SignUp = () => {
         <div>
             <EditedBar/>
             <h2 className={classes.title}>Sign up</h2>
-            <Box className={classes.main}>
+            <Box className={classes.signupMain}>
                 <form onSubmit={formik.handleSubmit}>
                     <Box display="flex" justifyContent="space-between">
-                        <TextField
-                            type="text"
-                            name="firstName"
-                            variant="outlined"
-                            label="First name"
-                            onChange={formik.handleChange}
-                            value={formik.values.firstName}
-                            size="small"
-                        />
-                        <TextField
-                            type="text"
-                            name="lastName"
-                            variant="outlined"
-                            label="Last name"
-                            onChange={formik.handleChange}
-                            value={formik.values.lastName}
-                            size="small"
-                        />
+                        <Box display="flex" flexDirection="column">
+                            <TextField
+                                type="text"
+                                name="firstName"
+                                variant="outlined"
+                                label="First name"
+                                onChange={formik.handleChange}
+                                value={formik.values.firstName}
+                                size="small"
+                            />
+                            {formik.errors.firstName && formik.touched.firstName ? <div className={classes.error}>{formik.errors.firstName}</div> : null}
+                        </Box>
+                        <Box display="flex" flexDirection="column">
+                            <TextField
+                                type="text"
+                                name="lastName"
+                                variant="outlined"
+                                label="Last name"
+                                onChange={formik.handleChange}
+                                value={formik.values.lastName}
+                                size="small"
+                            />
+                            {formik.errors.lastName && formik.touched.lastName ? <div className={classes.error}>{formik.errors.lastName}</div> : null}
+                        </Box>
                     </Box>
                     <Box pt={3}>
                         <Box>
@@ -79,6 +110,7 @@ const SignUp = () => {
                                 size="small"
                                 fullWidth
                             />
+                            {formik.errors.email && formik.touched.email ? <div className={classes.error}>{formik.errors.email}</div> : null}
                         </Box>
                         <Box pt={3}>
                             <TextField
@@ -91,7 +123,7 @@ const SignUp = () => {
                                 size="small"
                                 fullWidth
                             />
-                            <small className={classes.small}>At least 8 characters and 1 digit</small>
+                            {formik.errors.password && formik.touched.password ? <div className={classes.error}>{formik.errors.password}</div> : <small className={classes.small}>At least 6 characters</small>}
                         </Box>
                         <Box pt={3}>
                             <TextField
@@ -104,7 +136,7 @@ const SignUp = () => {
                                 size="small"
                                 fullWidth
                             />
-                            <small className={classes.small}>Repeat password</small>
+                            {formik.errors.password_confirmation && formik.touched.password_confirmation ? <div className={classes.error}>{formik.errors.password_confirmation}</div> : <small className={classes.small}>Repeat password</small>}
                         </Box>
                     </Box>
                     <Box pt={3} display="flex" justifyContent="center">
