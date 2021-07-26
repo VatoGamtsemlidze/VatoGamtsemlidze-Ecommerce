@@ -1,19 +1,22 @@
-import React, {useState } from 'react';
+import React, {useContext, useState} from 'react';
 import Footer from "../../layouts/Footer/Footer";
 import {Box, Button, Checkbox, FormControlLabel, TextField} from "@material-ui/core";
 import {useFormik} from "formik";
-import {Link, useParams} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebook, faTwitter, faLinkedin, faGithub} from "@fortawesome/free-brands-svg-icons";
 import {useStyles} from "./SignStyle";
 import {signUpPath} from "../../routes";
 import Loader from "../../Components/Loader/Loader";
 import TopBar from "../../layouts/TopBar/TopBar";
+import {UserContext} from "../../Contexts/UserContextProvider";
+import {mainPage} from "../../routes";
 
 const SignIn = () => {
     
     const classes = useStyles();
     const [loading, setLoading] = useState(false);
+    const userData = useContext(UserContext);
 
     const validate = values => {
         let errors = {};
@@ -56,7 +59,11 @@ const SignIn = () => {
                     }else{
                         localStorage.setItem('user', json);
                         console.log("success")
-                        window.location.href = "/"
+                        // window.location.href = "/"
+                        userData.setData({
+                            ...userData.data,
+                            isLogged: true
+                        })
                     }
                 })
                 .catch(err => {
@@ -67,6 +74,10 @@ const SignIn = () => {
     })
 
     return (
+        <>
+        {userData.data.isLogged ? (
+            <Redirect to={mainPage}/>
+            ) : (
         <div>
             <TopBar/>
             <h2 className={classes.title}>Sign in</h2>
@@ -127,7 +138,8 @@ const SignIn = () => {
                 </Loader>
             </Box>
             <Footer/>
-        </div>
+        </div>)}
+            </>
     );
 };
 

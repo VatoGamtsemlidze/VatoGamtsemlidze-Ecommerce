@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Footer from "../../layouts/Footer/Footer";
 import {Box, Button, Checkbox, FormControlLabel, TextField} from "@material-ui/core";
 import {useFormik} from "formik";
@@ -6,10 +6,12 @@ import {useStyles} from "../SignIn/SignStyle";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebook, faGithub, faLinkedin, faTwitter} from "@fortawesome/free-brands-svg-icons";
 import TopBar from "../../layouts/TopBar/TopBar";
+import {UserContext} from "../../Contexts/UserContextProvider";
 
 const SignUp = () => {
 
     const classes = useStyles();
+    const userData = useContext(UserContext);
 
     const validate = values => {
         let errors = {};
@@ -69,6 +71,7 @@ const SignUp = () => {
     return (
         <div>
             <TopBar/>
+            {userData.data.isLogged ? <h2>Already Logged</h2> : null}
             <h2 className={classes.title}>Sign up</h2>
             <Box className={classes.signupMain}>
                 <form onSubmit={formik.handleSubmit}>

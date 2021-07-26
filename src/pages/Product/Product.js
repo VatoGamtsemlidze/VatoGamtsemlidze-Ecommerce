@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './Product.css'
 import ViewListIcon from '@material-ui/icons/ViewList';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
@@ -11,7 +11,6 @@ import Loader from "../../Components/Loader/Loader";
 import {singlePagePath} from "../../routes";
 import PaginationComp from "../../Components/pagination";
 import {useStyles} from "./ProductStyles";
-
 
 const Product = ({}) => {
 
@@ -86,16 +85,17 @@ const Product = ({}) => {
                                                 <img className={classes.cardImg} style={{maxWidth: listOrGrid ? "300px" : "200px"}} src={`${el.image}`}/>
                                                 <Box pl={3}>
                                                     <Box display={listOrGrid ? "block" : "flex"} justifyContent="space-between">
-                                                    <h2 style={{maxWidth: "500px", color:"black",fontWeight:"500"}}>{el.title}</h2>
-                                                    <p>${el.price}</p>
+                                                        <h2 style={{maxWidth: "500px", color:"black",fontWeight:"500"}}>{el.title}</h2>
+                                                        <p>${el.price}</p>
                                                     </Box>
                                                     <Box pt={3}>
-                                                    <a style={{display: listOrGrid ? "none" : "block"}} className={classes.description}>{el.description}</a>
+                                                        <a style={{display: listOrGrid ? "none" : "block"}} className={classes.description}>{el.description}</a>
                                                     </Box>
                                                 </Box>
                                                 </CardContent>
                                         </CardActionArea>
-                                    </Card></Link>
+                                    </Card>
+                                    </Link>
                                 </Grid>
                             )
                         })}

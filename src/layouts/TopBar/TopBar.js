@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,6 +14,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import {Link, useLocation} from "react-router-dom";
 import {adminPath, signInPath} from "../../routes";
+import {UserContext} from "../../Contexts/UserContextProvider";
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -44,12 +45,17 @@ const useStyles = makeStyles((theme) => ({
         "&:hover": {
             boxShadow: "none",
         }
+    },
+    profilePicture: {
+        width: "20px"
     }
 }));
 
 export default function TopBar() {
+
+    const userData = useContext(UserContext)
     const classes = useStyles();
-    const [setAnchorEl] = React.useState(null);
+    const [anchorEl,setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
     const [scrolled, setScrolled] = useState(0);
     const path = useLocation();
@@ -126,6 +132,7 @@ export default function TopBar() {
         </Menu>
     );
 
+
     return (
         <div className={classes.grow}>
             <AppBar position={edited ? "relative" : "fixed"} className={classes.appBar} style={{background: scrolled>0 ? "white" : "transparent", boxShadow: "none", backgroundColor: adminStyle ? "#b8b8b8" : "transparent"}}>
@@ -167,9 +174,10 @@ export default function TopBar() {
                         <IconButton>
                             <p><a style={{color: scrolled || edited ? "gray" : "white"}}>Contact</a></p>
                         </IconButton>
-                        <Link to={signInPath}><IconButton>
-                            <p><a style={{color: scrolled || edited ? "gray" : "white"}}>Sign In</a></p>
-                        </IconButton></Link>
+                        {userData.data.isLogged ? null :
+                            <Link to={signInPath}><IconButton>
+                                <p><a style={{color: scrolled || edited ? "gray" : "white"}}>Sign In</a></p>
+                            </IconButton></Link>}
                         <Link to={adminPath}><IconButton
                             edge="end"
                             aria-label="account of current user"
@@ -178,7 +186,9 @@ export default function TopBar() {
                             onClick={handleProfileMenuOpen}
                             color="inherit"
                         >
-                            <AccountCircle style={{color: scrolled || edited ? "gray" : "white", marginTop:"7px"}}/>
+
+                                <AccountCircle style={{color: scrolled || edited ? "gray" : "white", marginTop:"7px"}}/>
+                            
                         </IconButton></Link>
                     </div>
                     <div className={classes.sectionMobile}>

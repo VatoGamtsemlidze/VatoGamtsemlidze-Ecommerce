@@ -5,6 +5,8 @@ import Main from "../../layouts/Main/Main";
 import Footer from "../../layouts/Footer/Footer";
 
 const MainPage = () => {
+
+
     return (
         <div>
             <TopBar/>
