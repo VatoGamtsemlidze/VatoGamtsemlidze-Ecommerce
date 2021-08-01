@@ -1,7 +1,17 @@
 import React, {useState} from 'react';
 import TextField from '@material-ui/core/TextField';
 import './Filter.css'
-import {Box, Button, Checkbox, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@material-ui/core";
+import {
+    Avatar,
+    Box,
+    Button,
+    Checkbox,
+    FormControl,
+    FormControlLabel,
+    FormLabel,
+    Radio,
+    RadioGroup
+} from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';

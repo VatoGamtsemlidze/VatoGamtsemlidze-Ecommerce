@@ -58,11 +58,11 @@ const SignIn = () => {
                         alert("error occured")
                     }else{
                         localStorage.setItem('user', json);
-                        console.log("success")
-                        // window.location.href = "/"
+                        console.log(localStorage.getItem('user'))
                         userData.setData({
                             ...userData.data,
-                            isLogged: true
+                            isLogged: true,
+                            user: json
                         })
                     }
                 })

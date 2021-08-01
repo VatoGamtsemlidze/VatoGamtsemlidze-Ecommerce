@@ -31,7 +31,6 @@ const SingleProduct = () => {
         fetch(`https://fakestoreapi.com/products/${id}`)
             .then(resp => resp.json())
             .then(dt => {
-                console.log(dt);
                 setData({
                     title: dt.title,
                     image: dt.image,

@@ -1,5 +1,4 @@
 import React, {useEffect, useState, useContext} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -13,43 +12,11 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import {Link, useLocation} from "react-router-dom";
-import {adminPath, signInPath} from "../../routes";
+import {adminPath, profilePath, signInPath} from "../../routes";
 import {UserContext} from "../../Contexts/UserContextProvider";
+import {Avatar, Box, Button} from "@material-ui/core";
+import {useStyles} from "./TopBarStyle";
 
-const useStyles = makeStyles((theme) => ({
-    grow: {
-        flexGrow: 1,
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        display: 'none',
-        [theme.breakpoints.up('sm')]: {
-            display: 'block',
-        },
-    },
-    sectionDesktop: {
-        display: 'none',
-        [theme.breakpoints.up('md')]: {
-            display: 'flex',
-        },
-    },
-    sectionMobile: {
-        display: 'flex',
-        [theme.breakpoints.up('md')]: {
-            display: 'none',
-        },
-    },
-    customIcon: {
-        "&:hover": {
-            boxShadow: "none",
-        }
-    },
-    profilePicture: {
-        width: "20px"
-    }
-}));
 
 export default function TopBar() {
 
@@ -67,7 +34,6 @@ export default function TopBar() {
             setScrolled(window.pageYOffset);
         }
         if(path.pathname != "/"){
-            console.log('in sign in')
             setEdited(true);
         }
         if(path.pathname == '/admin'){
@@ -76,20 +42,21 @@ export default function TopBar() {
     }, []);
 
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
-
     const handleMobileMenuClose = () => {
         setMobileMoreAnchorEl(null);
     };
-
     const handleMobileMenuOpen = (event) => {
         setMobileMoreAnchorEl(event.currentTarget);
     };
-
-    const menuId = 'primary-search-account-menu';
 
     const mobileMenuId = 'primary-search-account-menu-mobile';
     const renderMobileMenu = (
@@ -118,20 +85,34 @@ export default function TopBar() {
                 </IconButton>
                 <p>Notifications</p>
             </MenuItem>
-            <MenuItem onClick={handleProfileMenuOpen}>
-                <IconButton
-                    aria-label="account of current user"
-                    aria-controls="primary-search-account-menu"
-                    aria-haspopup="true"
-                    color="inherit"
-                >
-                    <AccountCircle />
-                </IconButton>
-                <p>Profile</p>
-            </MenuItem>
+            {userData.data.isLogged ?
+                <Link to={profilePath} style={{color: "black"}}><MenuItem onClick={handleProfileMenuOpen}>
+                    <IconButton
+                        aria-label="account of current user"
+                        aria-controls="primary-search-account-menu"
+                        aria-haspopup="true"
+                        color="inherit"
+                    >
+                        <AccountCircle/>
+                    </IconButton>
+                    <p>Profile</p>
+                </MenuItem></Link>
+                :
+                <Link to={signInPath} style={{color: "black"}}><MenuItem onClick={handleProfileMenuOpen}>
+                    <IconButton
+                        aria-label="account of current user"
+                        aria-controls="primary-search-account-menu"
+                        aria-haspopup="true"
+                        color="inherit"
+                    >
+                        <AccountCircle />
+                    </IconButton>
+                    <p>Sign in</p>
+                </MenuItem></Link>
+            }
+
         </Menu>
     );
-
 
     return (
         <div className={classes.grow}>
@@ -174,22 +155,38 @@ export default function TopBar() {
                         <IconButton>
                             <p><a style={{color: scrolled || edited ? "gray" : "white"}}>Contact</a></p>
                         </IconButton>
-                        {userData.data.isLogged ? null :
+                        {userData.data.isLogged ?
+                            <Box pt={2.5}>
+                                <AccountCircle aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} style={{cursor:"pointer",color: scrolled || edited ? "gray" : "white"}}>
+                                    Open Menu
+                                </AccountCircle>
+                                <Menu
+                                    id="simple-menu"
+                                    anchorEl={anchorEl}
+                                    keepMounted
+                                    open={Boolean(anchorEl)}
+                                    onClose={handleClose}
+                                >
+                                    <Link to={profilePath} style={{color: "black", textTransform:"capitalize"}}><MenuItem onClick={handleClose}>Profile</MenuItem></Link>
+                                    <Link to={adminPath} style={{color:"black",textTransform:"capitalize"}}><MenuItem onClick={handleClose}>My account</MenuItem></Link>
+                                    {userData.data.isLogged ?
+                                        <MenuItem style={{height:"35px"}} onClick={handleClose}>
+                                            <IconButton className={classes.noShadow}>
+                                                <a style={{color: "black", textTransform:"capitalize", fontSize:"15px"}} onClick={() =>
+                                                    userData.setData({
+                                                        ...userData.data,
+                                                        isLogged: false
+                                                    })}>Sign out</a>
+                                            </IconButton>
+                                        </MenuItem>
+                                        : null}
+                                </Menu>
+                            </Box>
+                            :
                             <Link to={signInPath}><IconButton>
                                 <p><a style={{color: scrolled || edited ? "gray" : "white"}}>Sign In</a></p>
                             </IconButton></Link>}
-                        <Link to={adminPath}><IconButton
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-controls={menuId}
-                            aria-haspopup="true"
-                            onClick={handleProfileMenuOpen}
-                            color="inherit"
-                        >
 
-                                <AccountCircle style={{color: scrolled || edited ? "gray" : "white", marginTop:"7px"}}/>
-                            
-                        </IconButton></Link>
                     </div>
                     <div className={classes.sectionMobile}>
                         <IconButton
