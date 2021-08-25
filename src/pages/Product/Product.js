@@ -46,7 +46,6 @@ const Product = ({}) => {
             .then(resp => resp.json())
             .then(dt => {
                 setData(dt);
-                console.log(dt);
             })
             .catch(error => {
                 console.log("Error: "+ error);
@@ -59,9 +58,18 @@ const Product = ({}) => {
     }, []);
 
     let addToCart = (el) => {
-        userData.setData(
-            ...userData.data,
-            userData.cartProduct.push(el)
+        userData.setData({
+                ...userData.data,
+                cartProduct: [
+                    ...userData.data.cartProduct,
+                    {
+                    img: el.image,
+                    title: el.title,
+                    price: el.price,
+                    desc: el.desc
+                    }
+                ]
+            }
         )
     }
 
@@ -108,7 +116,7 @@ const Product = ({}) => {
                                     </Card>
                                     </Link>
                                     <Box display="flex" justifyContent="center">
-                                        <Button onClick={(el) => addToCart()} variant="contained" style={{backgroundColor:"#2672ef", color:"white",fontSize:"12px"}}>Add to cart</Button>
+                                        <Button onClick={() => addToCart(el)} variant="contained" style={{backgroundColor:"#2672ef", color:"white",fontSize:"12px"}}>Add to cart</Button>
                                     </Box>
                                 </Grid>
                             )

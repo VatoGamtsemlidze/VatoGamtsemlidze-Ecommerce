@@ -13,6 +13,7 @@ const CartItems = () => {
     const userData = useContext(UserContext);
 
     const classes = useStyles();
+    console.log(userData);
 
     return (
         <Box boxShadow="1px 1px 5px #d5d5d5" borderRadius="2px">
