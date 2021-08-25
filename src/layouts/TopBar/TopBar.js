@@ -12,11 +12,11 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import {Link, useLocation} from "react-router-dom";
-import {adminPath, profilePath, signInPath} from "../../routes";
+import {adminPath, cartPath, profilePath, signInPath} from "../../routes";
 import {UserContext} from "../../Contexts/UserContextProvider";
 import {Avatar, Box, Button} from "@material-ui/core";
 import {useStyles} from "./TopBarStyle";
-
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 export default function TopBar() {
 
@@ -150,7 +150,7 @@ export default function TopBar() {
                             </Badge>
                         </IconButton>
                         <IconButton>
-                            <p><a href="#" style={{color: scrolled || edited ? "gray" : "white"}}>Shop</a></p>
+                            <Link to={cartPath}><a href="#" style={{color: scrolled || edited ? "gray" : "white"}}><ShoppingCartIcon /></a></Link>
                         </IconButton>
                         <IconButton>
                             <p><a style={{color: scrolled || edited ? "gray" : "white"}}>Contact</a></p>

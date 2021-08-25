@@ -5,18 +5,20 @@ import ViewModuleIcon from '@material-ui/icons/ViewModule';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
-import {Box, Grid} from "@material-ui/core";
+import {Box, Button, Grid} from "@material-ui/core";
 import {Link} from "react-router-dom";
 import Loader from "../../Components/Loader/Loader";
 import {singlePagePath} from "../../routes";
 import PaginationComp from "../../Components/pagination";
 import {useStyles} from "./ProductStyles";
+import {UserContext} from "../../Contexts/UserContextProvider";
 
 const Product = ({}) => {
 
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [cardsPerPage] = useState(6);
+    const userData = useContext(UserContext);
 
     const [data, setData] = useState([
         {
@@ -44,6 +46,7 @@ const Product = ({}) => {
             .then(resp => resp.json())
             .then(dt => {
                 setData(dt);
+                console.log(dt);
             })
             .catch(error => {
                 console.log("Error: "+ error);
@@ -54,6 +57,13 @@ const Product = ({}) => {
     useEffect(() => {
         getProducts();
     }, []);
+
+    let addToCart = (el) => {
+        userData.setData(
+            ...userData.data,
+            userData.cartProduct.push(el)
+        )
+    }
 
     return (
         <div className="product-main">
@@ -91,11 +101,15 @@ const Product = ({}) => {
                                                     <Box pt={3}>
                                                         <a style={{display: listOrGrid ? "none" : "block"}} className={classes.description}>{el.description}</a>
                                                     </Box>
+
                                                 </Box>
                                                 </CardContent>
                                         </CardActionArea>
                                     </Card>
                                     </Link>
+                                    <Box display="flex" justifyContent="center">
+                                        <Button onClick={(el) => addToCart()} variant="contained" style={{backgroundColor:"#2672ef", color:"white",fontSize:"12px"}}>Add to cart</Button>
+                                    </Box>
                                 </Grid>
                             )
                         })}
