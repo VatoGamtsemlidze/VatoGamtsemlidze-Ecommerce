@@ -46,6 +46,7 @@ const Product = ({}) => {
             .then(resp => resp.json())
             .then(dt => {
                 setData(dt);
+                console.log(dt)
             })
             .catch(error => {
                 console.log("Error: "+ error);
@@ -63,10 +64,11 @@ const Product = ({}) => {
                 cartProduct: [
                     ...userData.data.cartProduct,
                     {
-                    img: el.image,
-                    title: el.title,
-                    price: el.price,
-                    desc: el.desc
+                        img: el.image,
+                        title: el.title,
+                        price: el.price,
+                        desc: el.desc,
+                        id: el.id
                     }
                 ]
             }

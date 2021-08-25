@@ -37,5 +37,15 @@ export const useStyles = makeStyles({
         fontSize:"20px",
         color:"black",
         fontWeight:"600"
+    },
+    amounts: {
+        fontSize:"17px",
+        fontWeight:"lighter",
+        color:"gray"
+    },
+    totalAmount: {
+        fontSize:"20px",
+        fontWeight:"500",
+        color:"black"
     }
 })
