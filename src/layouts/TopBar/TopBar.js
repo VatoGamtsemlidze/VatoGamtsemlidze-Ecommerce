@@ -13,14 +13,14 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import {Link, useLocation} from "react-router-dom";
 import {adminPath, cartPath, profilePath, signInPath} from "../../routes";
-import {UserContext} from "../../Contexts/UserContextProvider";
-import {Avatar, Box, Button} from "@material-ui/core";
+import {Box} from "@material-ui/core";
 import {useStyles} from "./TopBarStyle";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import {useDispatch} from "react-redux";
+import {signOutAction} from "../../store/actions/userActions";
 
 export default function TopBar() {
 
-    const userData = useContext(UserContext)
     const classes = useStyles();
     const [anchorEl,setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -28,6 +28,7 @@ export default function TopBar() {
     const path = useLocation();
     const [edited, setEdited] = useState(false);
     const [adminStyle, setAdminStyle] = useState(false);
+    const dispatch = useDispatch()
 
     useEffect(() => {
         window.onscroll = () => {
@@ -85,7 +86,6 @@ export default function TopBar() {
                 </IconButton>
                 <p>Notifications</p>
             </MenuItem>
-            {userData.data.isLogged ?
                 <Link to={profilePath} style={{color: "black"}}><MenuItem onClick={handleProfileMenuOpen}>
                     <IconButton
                         aria-label="account of current user"
@@ -97,7 +97,6 @@ export default function TopBar() {
                     </IconButton>
                     <p>Profile</p>
                 </MenuItem></Link>
-                :
                 <Link to={signInPath} style={{color: "black"}}><MenuItem onClick={handleProfileMenuOpen}>
                     <IconButton
                         aria-label="account of current user"
@@ -109,7 +108,6 @@ export default function TopBar() {
                     </IconButton>
                     <p>Sign in</p>
                 </MenuItem></Link>
-            }
 
         </Menu>
     );
@@ -155,7 +153,6 @@ export default function TopBar() {
                         <IconButton>
                             <p><a style={{color: scrolled || edited ? "gray" : "white"}}>Contact</a></p>
                         </IconButton>
-                        {userData.data.isLogged ?
                             <Box pt={2.5}>
                                 <AccountCircle aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} style={{cursor:"pointer",color: scrolled || edited ? "gray" : "white"}}>
                                     Open Menu
@@ -169,23 +166,16 @@ export default function TopBar() {
                                 >
                                     <Link to={profilePath} style={{color: "black", textTransform:"capitalize"}}><MenuItem onClick={handleClose}>Profile</MenuItem></Link>
                                     <Link to={adminPath} style={{color:"black",textTransform:"capitalize"}}><MenuItem onClick={handleClose}>My account</MenuItem></Link>
-                                    {userData.data.isLogged ?
-                                        <MenuItem style={{height:"35px"}} onClick={handleClose}>
+                                        <MenuItem style={{height:"35px"}} onClick={() => dispatch(signOutAction())}>
                                             <IconButton className={classes.noShadow}>
-                                                <a style={{color: "black", textTransform:"capitalize", fontSize:"15px"}} onClick={() =>
-                                                    userData.setData({
-                                                        ...userData.data,
-                                                        isLogged: false
-                                                    })}>Sign out</a>
+                                                <a style={{color: "black", textTransform:"capitalize", fontSize:"15px"}}>Sign out</a>
                                             </IconButton>
                                         </MenuItem>
-                                        : null}
                                 </Menu>
                             </Box>
-                            :
                             <Link to={signInPath}><IconButton>
                                 <p><a style={{color: scrolled || edited ? "gray" : "white"}}>Sign In</a></p>
-                            </IconButton></Link>}
+                            </IconButton></Link>
 
                     </div>
                     <div className={classes.sectionMobile}>

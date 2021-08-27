@@ -9,14 +9,18 @@ import {useStyles} from "./SignStyle";
 import {signUpPath} from "../../routes";
 import Loader from "../../Components/Loader/Loader";
 import TopBar from "../../layouts/TopBar/TopBar";
-import {UserContext} from "../../Contexts/UserContextProvider";
+import {useDispatch} from "react-redux";
+import store from '../../store/store'
 import {mainPage} from "../../routes";
+import {signInAction} from "../../store/actions/userActions";
+import {initialStore} from "../../store/reducers/userReducer";
 
 const SignIn = () => {
     
     const classes = useStyles();
     const [loading, setLoading] = useState(false);
-    const userData = useContext(UserContext);
+    const dispatch = useDispatch();
+    const state = store.getState()
 
     const validate = values => {
         let errors = {};
@@ -58,12 +62,7 @@ const SignIn = () => {
                         alert("error occured")
                     }else{
                         localStorage.setItem('user', json);
-                        console.log(localStorage.getItem('user'))
-                        userData.setData({
-                            ...userData.data,
-                            isLogged: true,
-                            user: json
-                        })
+                        dispatch(signInAction());
                     }
                 })
                 .catch(err => {
@@ -75,9 +74,7 @@ const SignIn = () => {
 
     return (
         <>
-        {userData.data.isLogged ? (
-            <Redirect to={mainPage}/>
-            ) : (
+            {state.isLoggedIn ? console.log("logged"): (
         <div>
             <TopBar/>
             <h2 className={classes.title}>Sign in</h2>

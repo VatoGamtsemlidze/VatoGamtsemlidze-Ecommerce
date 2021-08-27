@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Product.css'
 import ViewListIcon from '@material-ui/icons/ViewList';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
@@ -11,14 +11,12 @@ import Loader from "../../Components/Loader/Loader";
 import {singlePagePath} from "../../routes";
 import PaginationComp from "../../Components/pagination";
 import {useStyles} from "./ProductStyles";
-import {UserContext} from "../../Contexts/UserContextProvider";
 
 const Product = ({}) => {
 
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [cardsPerPage] = useState(6);
-    const userData = useContext(UserContext);
 
     const [data, setData] = useState([
         {
@@ -58,22 +56,6 @@ const Product = ({}) => {
         getProducts();
     }, []);
 
-    let addToCart = (el) => {
-        userData.setData({
-                ...userData.data,
-                cartProduct: [
-                    ...userData.data.cartProduct,
-                    {
-                        img: el.image,
-                        title: el.title,
-                        price: el.price,
-                        desc: el.desc,
-                        id: el.id
-                    }
-                ]
-            }
-        )
-    }
 
     return (
         <div className="product-main">
@@ -118,7 +100,7 @@ const Product = ({}) => {
                                     </Card>
                                     </Link>
                                     <Box display="flex" justifyContent="center">
-                                        <Button onClick={() => addToCart(el)} variant="contained" style={{backgroundColor:"#2672ef", color:"white",fontSize:"12px"}}>Add to cart</Button>
+                                        <Button variant="contained" style={{backgroundColor:"#2672ef", color:"white",fontSize:"12px"}}>Add to cart</Button>
                                     </Box>
                                 </Grid>
                             )

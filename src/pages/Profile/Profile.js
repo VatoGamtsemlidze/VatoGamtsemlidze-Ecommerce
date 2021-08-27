@@ -7,21 +7,18 @@ import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import {Redirect} from "react-router-dom";
 import {mainPage} from "../../routes";
-import {UserContext} from "../../Contexts/UserContextProvider";
 
 
 const Profile = () => {
 
     const classes = useStyles();
     const user = localStorage.getItem('user')
-    const userData = useContext(UserContext);
 
-    let name = userData.data.user.user.name;
-    let email = userData.data.user.user.email;
+    let name = 'John';
+    let email = 'snow@';
 
     return (
         <>
-            {userData.data.isLogged ? (
                 <div>
                     <TopBar/>
                     <Box  display="flex" justifyContent="center" pt={5}>
@@ -51,9 +48,6 @@ const Profile = () => {
                     </Box>
                     <Footer/>
                 </div>
-            ) : (
-                <Redirect to={mainPage}/>
-         )}
         </>
     );
 };

@@ -8,6 +8,7 @@ import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import Profile from "./pages/Profile/Profile";
 import Cart from "./pages/Cart/Cart";
+import PrivateRoute from "./Components/PrivateRoute";
 
 function App() {
     return (
@@ -17,7 +18,7 @@ function App() {
                         <Route path={mainPage} exact component={MainPage}/>
                         <Route path={singlePagePath} component={SingleProduct}/>
                         <Route path={adminPath} component={Admin}/>
-                        <Route path={signInPath} component={SignIn}/>
+                        <PrivateRoute path={signInPath} component={SignIn}/>
                         <Route path={signUpPath} component={SignUp}/>
                         <Route path={profilePath} component={Profile}/>
                         <Route path={cartPath} component={Cart}/>
