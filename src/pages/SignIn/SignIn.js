@@ -75,7 +75,7 @@ const SignIn = () => {
 
     return (
         <>
-        <div>
+            <div>
             <TopBar/>
             <h2 className={classes.title}>Sign in</h2>
             <Box className={classes.main}>
@@ -136,7 +136,7 @@ const SignIn = () => {
             </Box>
             <Footer/>
         </div>
-            </>
+        </>
     );
 };
 

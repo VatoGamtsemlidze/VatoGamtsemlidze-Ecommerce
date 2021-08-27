@@ -17,10 +17,10 @@ function App() {
                     <Switch>
                         <Route path={mainPage} exact component={MainPage}/>
                         <Route path={singlePagePath} component={SingleProduct}/>
-                        <Route path={adminPath} component={Admin}/>
-                        <PrivateRoute path={signInPath} component={SignIn}/>
+                        <PrivateRoute path={adminPath} component={Admin}/>
+                        <Route path={signInPath} component={SignIn}/>
                         <Route path={signUpPath} component={SignUp}/>
-                        <Route path={profilePath} component={Profile}/>
+                        <PrivateRoute path={profilePath} component={Profile}/>
                         <Route path={cartPath} component={Cart}/>
                     </Switch>
                 </div>
