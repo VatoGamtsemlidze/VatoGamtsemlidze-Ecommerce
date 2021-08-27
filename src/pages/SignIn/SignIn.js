@@ -9,18 +9,19 @@ import {useStyles} from "./SignStyle";
 import {signUpPath} from "../../routes";
 import Loader from "../../Components/Loader/Loader";
 import TopBar from "../../layouts/TopBar/TopBar";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import store from '../../store/store'
 import {mainPage} from "../../routes";
-import {signInAction} from "../../store/actions/userActions";
+import {setLoginAction, signInAction} from "../../store/actions/userActions";
 import {initialStore} from "../../store/reducers/userReducer";
+import {selectLoggedIn} from "../../store/selectors/userSelectors";
 
 const SignIn = () => {
     
     const classes = useStyles();
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
-    const state = store.getState()
+    const isLoggedIn = useSelector(selectLoggedIn)
 
     const validate = values => {
         let errors = {};
@@ -56,13 +57,13 @@ const SignIn = () => {
                 })
             })
                 .then(res=>res.json())
-                .then(json=> {
+                .then(json => {
                     console.log(json);
                     if(json.errors){
                         alert("error occured")
                     }else{
-                        localStorage.setItem('user', json);
-                        dispatch(signInAction());
+                        localStorage.setItem('token', json.token.access_token);
+                        dispatch(setLoginAction(true));
                     }
                 })
                 .catch(err => {
@@ -74,7 +75,6 @@ const SignIn = () => {
 
     return (
         <>
-            {state.isLoggedIn ? console.log("logged"): (
         <div>
             <TopBar/>
             <h2 className={classes.title}>Sign in</h2>
@@ -135,7 +135,7 @@ const SignIn = () => {
                 </Loader>
             </Box>
             <Footer/>
-        </div>)}
+        </div>
             </>
     );
 };

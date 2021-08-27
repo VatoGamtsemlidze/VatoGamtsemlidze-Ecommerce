@@ -1,18 +1,21 @@
-import React from "react";
-import { Redirect, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
-import {selectLoggedIn} from "../store/selectors/userSelectors";
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { Redirect, Route } from 'react-router-dom'
 import {mainPage} from "../routes";
+import {selectLoggedIn} from "../store/selectors/userSelectors";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
 
-    const isLoggedIn = useSelector(selectLoggedIn);
-    console.log(isLoggedIn);
+    const token = localStorage.getItem('token')
+    const isLoggedIn = useSelector(selectLoggedIn)
     return (
         <Route
             {...rest}
-            render={(props) => (
-                isLoggedIn ? <Redirect
+            render={(props) =>
+                isLoggedIn || token ? (
+                        <Component {...props} />
+                ) : (
+                    <Redirect
                         to={{
                             pathname: mainPage,
                             state: {
@@ -20,11 +23,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
                             },
                         }}
                     />
-                    :
-                    <Component {...props}/>
-            )
+                )
             }
         />
-    );
+    )
 }
+
 export default PrivateRoute;

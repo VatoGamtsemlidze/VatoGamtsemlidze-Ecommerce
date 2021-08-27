@@ -17,7 +17,7 @@ import {Box} from "@material-ui/core";
 import {useStyles} from "./TopBarStyle";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import {useDispatch} from "react-redux";
-import {signOutAction} from "../../store/actions/userActions";
+import {setLoginAction} from "../../store/actions/userActions";
 
 export default function TopBar() {
 
@@ -166,7 +166,7 @@ export default function TopBar() {
                                 >
                                     <Link to={profilePath} style={{color: "black", textTransform:"capitalize"}}><MenuItem onClick={handleClose}>Profile</MenuItem></Link>
                                     <Link to={adminPath} style={{color:"black",textTransform:"capitalize"}}><MenuItem onClick={handleClose}>My account</MenuItem></Link>
-                                        <MenuItem style={{height:"35px"}} onClick={() => dispatch(signOutAction())}>
+                                        <MenuItem style={{height:"35px"}} onClick={() => dispatch(setLoginAction(false))}>
                                             <IconButton className={classes.noShadow}>
                                                 <a style={{color: "black", textTransform:"capitalize", fontSize:"15px"}}>Sign out</a>
                                             </IconButton>

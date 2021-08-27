@@ -11,11 +11,6 @@ export default function userReducer(store = initialStore, action){
                 ...store,
                 isLoggedIn: action.isLoggedIn
             }
-        case SIGN_OUT:
-            return {
-                ...store,
-                isLoggedIn: action.isLoggedOut
-            }
         default:
             return store
     }
