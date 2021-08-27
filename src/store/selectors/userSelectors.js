@@ -1,1 +1,1 @@
-export const selectLoggedIn = (state) => state.isLoggedIn;
+export const selectUser = (state) => state.userReducer;

@@ -44,7 +44,6 @@ const Product = ({}) => {
             .then(resp => resp.json())
             .then(dt => {
                 setData(dt);
-                console.log(dt)
             })
             .catch(error => {
                 console.log("Error: "+ error);

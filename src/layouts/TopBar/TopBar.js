@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, {useEffect, useState} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -15,9 +15,11 @@ import {Link, useLocation} from "react-router-dom";
 import {adminPath, cartPath, profilePath, signInPath} from "../../routes";
 import {Box} from "@material-ui/core";
 import {useStyles} from "./TopBarStyle";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setLoginAction} from "../../store/actions/userActions";
+import {selectUser} from "../../store/selectors/userSelectors";
 
 export default function TopBar() {
 
@@ -29,6 +31,7 @@ export default function TopBar() {
     const [edited, setEdited] = useState(false);
     const [adminStyle, setAdminStyle] = useState(false);
     const dispatch = useDispatch()
+    const user = useSelector(selectUser);
 
     useEffect(() => {
         window.onscroll = () => {
@@ -86,17 +89,30 @@ export default function TopBar() {
                 </IconButton>
                 <p>Notifications</p>
             </MenuItem>
-                <Link to={profilePath} style={{color: "black"}}><MenuItem onClick={handleProfileMenuOpen}>
-                    <IconButton
-                        aria-label="account of current user"
-                        aria-controls="primary-search-account-menu"
-                        aria-haspopup="true"
-                        color="inherit"
-                    >
-                        <AccountCircle/>
-                    </IconButton>
-                    <p>Profile</p>
-                </MenuItem></Link>
+            {user.isLoggedIn ?
+                <>
+                <Link to={profilePath} style={{color: "black"}}>
+                    <MenuItem onClick={handleProfileMenuOpen}>
+                        <IconButton
+                            aria-label="account of current user"
+                            aria-controls="primary-search-account-menu"
+                            aria-haspopup="true"
+                            color="inherit"
+                        >
+                            <AccountCircle/>
+                        </IconButton>
+                        <p>Profile</p>
+                    </MenuItem></Link>
+                    <MenuItem style={{height:"35px"}} onClick={() => dispatch(setLoginAction(false))}>
+                        <IconButton>
+                            <ExitToAppIcon/>
+                            <Box pl={1}>
+                            <p>Sign out</p>
+                            </Box>
+                        </IconButton>
+                    </MenuItem>
+                </>
+                :
                 <Link to={signInPath} style={{color: "black"}}><MenuItem onClick={handleProfileMenuOpen}>
                     <IconButton
                         aria-label="account of current user"
@@ -108,7 +124,7 @@ export default function TopBar() {
                     </IconButton>
                     <p>Sign in</p>
                 </MenuItem></Link>
-
+            }
         </Menu>
     );
 
@@ -153,6 +169,7 @@ export default function TopBar() {
                         <IconButton>
                             <p><a style={{color: scrolled || edited ? "gray" : "white"}}>Contact</a></p>
                         </IconButton>
+                        {user.isLoggedIn ?
                             <Box pt={2.5}>
                                 <AccountCircle aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} style={{cursor:"pointer",color: scrolled || edited ? "gray" : "white"}}>
                                     Open Menu
@@ -166,16 +183,23 @@ export default function TopBar() {
                                 >
                                     <Link to={profilePath} style={{color: "black", textTransform:"capitalize"}}><MenuItem onClick={handleClose}>Profile</MenuItem></Link>
                                     <Link to={adminPath} style={{color:"black",textTransform:"capitalize"}}><MenuItem onClick={handleClose}>My account</MenuItem></Link>
+                                    {user.isLoggedIn ?
                                         <MenuItem style={{height:"35px"}} onClick={() => dispatch(setLoginAction(false))}>
                                             <IconButton className={classes.noShadow}>
                                                 <a style={{color: "black", textTransform:"capitalize", fontSize:"15px"}}>Sign out</a>
                                             </IconButton>
                                         </MenuItem>
+                                        :
+                                        null
+                                    }
                                 </Menu>
                             </Box>
+                            :
                             <Link to={signInPath}><IconButton>
                                 <p><a style={{color: scrolled || edited ? "gray" : "white"}}>Sign In</a></p>
                             </IconButton></Link>
+                        }
+
 
                     </div>
                     <div className={classes.sectionMobile}>

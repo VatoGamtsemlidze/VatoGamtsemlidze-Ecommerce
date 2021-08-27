@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import Footer from "../../layouts/Footer/Footer";
 import {Box, Button, Checkbox, FormControlLabel, TextField} from "@material-ui/core";
 import {useFormik} from "formik";

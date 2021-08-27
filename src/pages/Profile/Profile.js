@@ -1,21 +1,21 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import TopBar from "../../layouts/TopBar/TopBar";
 import Footer from "../../layouts/Footer/Footer";
 import {Box, Button, Grid} from "@material-ui/core";
 import {useStyles} from "./ProfileStyle";
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
-import {Redirect} from "react-router-dom";
-import {mainPage} from "../../routes";
+import {selectUser} from "../../store/selectors/userSelectors";
+import {useSelector} from "react-redux";
 
 
 const Profile = () => {
 
     const classes = useStyles();
-    const user = localStorage.getItem('user')
+    const user = useSelector(selectUser);
+    let name = user.user.name;
+    let email = user.user.email;
 
-    let name = 'John';
-    let email = 'snow@';
 
     return (
         <>

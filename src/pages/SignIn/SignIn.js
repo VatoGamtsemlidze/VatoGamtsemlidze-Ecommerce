@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import Footer from "../../layouts/Footer/Footer";
 import {Box, Button, Checkbox, FormControlLabel, TextField} from "@material-ui/core";
 import {useFormik} from "formik";
@@ -6,22 +6,19 @@ import {Link, Redirect} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebook, faTwitter, faLinkedin, faGithub} from "@fortawesome/free-brands-svg-icons";
 import {useStyles} from "./SignStyle";
-import {signUpPath} from "../../routes";
+import {mainPage, signUpPath} from "../../routes";
 import Loader from "../../Components/Loader/Loader";
 import TopBar from "../../layouts/TopBar/TopBar";
 import {useDispatch, useSelector} from "react-redux";
-import store from '../../store/store'
-import {mainPage} from "../../routes";
-import {setLoginAction, signInAction} from "../../store/actions/userActions";
-import {initialStore} from "../../store/reducers/userReducer";
-import {selectLoggedIn} from "../../store/selectors/userSelectors";
+import {setLoginAction, setTokenAction, setUserAction} from "../../store/actions/userActions";
+import {selectUser} from "../../store/selectors/userSelectors";
 
 const SignIn = () => {
     
     const classes = useStyles();
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
-    const isLoggedIn = useSelector(selectLoggedIn)
+    const user = useSelector(selectUser)
 
     const validate = values => {
         let errors = {};
@@ -58,11 +55,12 @@ const SignIn = () => {
             })
                 .then(res=>res.json())
                 .then(json => {
-                    console.log(json);
                     if(json.errors){
                         alert("error occured")
                     }else{
                         localStorage.setItem('token', json.token.access_token);
+                        dispatch(setUserAction(json.user))
+                        dispatch(setTokenAction(json.token.access_token))
                         dispatch(setLoginAction(true));
                     }
                 })
@@ -75,6 +73,7 @@ const SignIn = () => {
 
     return (
         <>
+            {user.isLoggedIn ? <Redirect to={mainPage}/> :
             <div>
             <TopBar/>
             <h2 className={classes.title}>Sign in</h2>
@@ -135,7 +134,7 @@ const SignIn = () => {
                 </Loader>
             </Box>
             <Footer/>
-        </div>
+        </div>}
         </>
     );
 };
