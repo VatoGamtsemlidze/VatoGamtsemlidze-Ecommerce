@@ -11,12 +11,15 @@ import Loader from "../../Components/Loader/Loader";
 import {singlePagePath} from "../../routes";
 import PaginationComp from "../../Components/pagination";
 import {useStyles} from "./ProductStyles";
+import {useDispatch} from "react-redux";
+import {addProductAction} from "../../store/actions/productActions";
 
 const Product = ({}) => {
 
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [cardsPerPage] = useState(6);
+    const dispatch = useDispatch();
 
     const [data, setData] = useState([
         {
@@ -99,7 +102,7 @@ const Product = ({}) => {
                                     </Card>
                                     </Link>
                                     <Box display="flex" justifyContent="center">
-                                        <Button variant="contained" style={{backgroundColor:"#2672ef", color:"white",fontSize:"12px"}}>Add to cart</Button>
+                                        <Button onClick={() => dispatch(addProductAction(el))} variant="contained" style={{backgroundColor:"#2672ef", color:"white",fontSize:"12px"}}>Add to cart</Button>
                                     </Box>
                                 </Grid>
                             )

@@ -9,7 +9,14 @@ export default function productReducer(store = initialStore, action){
         case ADD_PRODUCT:
             return {
                 ...store,
-                products: action.products
+                products: [...store.products, action.product]
+            }
+        case REMOVE_PRODUCT:
+            return {
+                ...store,
+                products: [...store.products, store.products.filter(item => item.id !== action.index)]
+                //filter or splice with action.index
+
             }
         default:
             return store

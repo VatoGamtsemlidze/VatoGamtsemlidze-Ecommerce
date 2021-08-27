@@ -16,7 +16,6 @@ const Profile = () => {
     let name = user.user.name;
     let email = user.user.email;
 
-
     return (
         <>
                 <div>
