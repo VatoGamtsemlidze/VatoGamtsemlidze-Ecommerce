@@ -14,7 +14,9 @@ export default function productReducer(store = initialStore, action){
         case REMOVE_PRODUCT:
             return {
                 ...store,
-                products: [...store.products, store.products.filter(item => item.id !== action.index)]
+                products: store.products.filter(
+                    (item) => item.id !== action.index,
+                ),
                 //filter or splice with action.index
 
             }
