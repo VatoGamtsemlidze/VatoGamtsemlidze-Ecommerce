@@ -10,8 +10,8 @@ import {mainPage, signUpPath} from "../../routes";
 import Loader from "../../Components/Loader/Loader";
 import TopBar from "../../layouts/TopBar/TopBar";
 import {useDispatch, useSelector} from "react-redux";
-import {setLoginAction, setTokenAction, setUserAction} from "../../store/actions/userActions";
-import {selectUser} from "../../store/selectors/userSelectors";
+import {setLoginAction, setTokenAction, setUserAction} from "../../store/user/userActions";
+import {selectUser} from "../../store/user/userSelectors";
 
 const SignIn = () => {
     

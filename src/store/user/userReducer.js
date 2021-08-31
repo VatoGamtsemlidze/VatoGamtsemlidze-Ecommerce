@@ -1,4 +1,4 @@
-import {SIGN_IN, SET_USER, SET_TOKEN} from "../constants/userConsts";
+import {SIGN_IN, SET_USER, SET_TOKEN} from "./userConsts";
 
 export const initialStore = {
     user: {},

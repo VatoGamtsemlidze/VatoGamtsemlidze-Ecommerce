@@ -5,7 +5,7 @@ import {Box, Button, Grid} from "@material-ui/core";
 import {useStyles} from "./ProfileStyle";
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
-import {selectUser} from "../../store/selectors/userSelectors";
+import {selectUser} from "../../store/user/userSelectors";
 import {useSelector} from "react-redux";
 
 

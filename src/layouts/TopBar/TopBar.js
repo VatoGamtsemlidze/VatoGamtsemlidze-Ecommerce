@@ -18,8 +18,8 @@ import {useStyles} from "./TopBarStyle";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import {useDispatch, useSelector} from "react-redux";
-import {setLoginAction} from "../../store/actions/userActions";
-import {selectUser} from "../../store/selectors/userSelectors";
+import {setLoginAction} from "../../store/user/userActions";
+import {selectUser} from "../../store/user/userSelectors";
 
 export default function TopBar() {
 

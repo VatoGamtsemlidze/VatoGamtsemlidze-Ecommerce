@@ -6,8 +6,8 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import DeleteIcon from '@material-ui/icons/Delete';
 import {useDispatch, useSelector} from "react-redux";
-import {selectProduct} from "../../store/selectors/productSelectors";
-import {removeProductAction} from "../../store/actions/productActions";
+import {selectProduct} from "../../store/product/productSelectors";
+import {removeProductAction} from "../../store/product/productActions";
 
 const CartItems = () => {
 

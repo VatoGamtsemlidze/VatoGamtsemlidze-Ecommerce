@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useStyles} from "./CartStyle";
 import {Box, Button} from "@material-ui/core";
 import {useSelector} from "react-redux";
-import {selectProduct} from "../../store/selectors/productSelectors";
+import {selectProduct} from "../../store/product/productSelectors";
 
 const CartAmount = () => {
 

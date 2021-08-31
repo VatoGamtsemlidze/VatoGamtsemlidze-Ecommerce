@@ -1,4 +1,4 @@
-import {ADD_PRODUCT, REMOVE_PRODUCT} from "../constants/productConsts";
+import {ADD_PRODUCT, REMOVE_PRODUCT} from "./productConsts";
 
 const initialStore = {
     products: []

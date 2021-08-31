@@ -12,7 +12,7 @@ import {singlePagePath} from "../../routes";
 import PaginationComp from "../../Components/pagination";
 import {useStyles} from "./ProductStyles";
 import {useDispatch} from "react-redux";
-import {addProductAction} from "../../store/actions/productActions";
+import {addProductAction} from "../../store/product/productActions";
 
 const Product = ({}) => {
 

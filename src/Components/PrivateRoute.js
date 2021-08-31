@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Redirect, Route } from 'react-router-dom'
 import {mainPage} from "../routes";
-import {selectUser} from "../store/selectors/userSelectors";
+import {selectUser} from "../store/user/userSelectors";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
 
