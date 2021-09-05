@@ -12,7 +12,7 @@ const Main  = () => {
                     <Filter/>
                 </Grid>
                 <Grid xs={8}>
-                    <Product/>
+                    <Product />
                 </Grid>
             </Container>
         </div>
