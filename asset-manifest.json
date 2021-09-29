@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/VatoGamtsemlidze-Ecommerce/static/css/main.becb8901.chunk.css",
+    "main.js": "/VatoGamtsemlidze-Ecommerce/static/js/main.02fb9d21.chunk.js",
+    "main.js.map": "/VatoGamtsemlidze-Ecommerce/static/js/main.02fb9d21.chunk.js.map",
+    "runtime-main.js": "/VatoGamtsemlidze-Ecommerce/static/js/runtime-main.d438dce3.js",
+    "runtime-main.js.map": "/VatoGamtsemlidze-Ecommerce/static/js/runtime-main.d438dce3.js.map",
+    "static/js/2.29f9d2c1.chunk.js": "/VatoGamtsemlidze-Ecommerce/static/js/2.29f9d2c1.chunk.js",
+    "static/js/2.29f9d2c1.chunk.js.map": "/VatoGamtsemlidze-Ecommerce/static/js/2.29f9d2c1.chunk.js.map",
+    "static/js/3.2214ee7b.chunk.js": "/VatoGamtsemlidze-Ecommerce/static/js/3.2214ee7b.chunk.js",
+    "static/js/3.2214ee7b.chunk.js.map": "/VatoGamtsemlidze-Ecommerce/static/js/3.2214ee7b.chunk.js.map",
+    "index.html": "/VatoGamtsemlidze-Ecommerce/index.html",
+    "static/css/main.becb8901.chunk.css.map": "/VatoGamtsemlidze-Ecommerce/static/css/main.becb8901.chunk.css.map",
+    "static/js/2.29f9d2c1.chunk.js.LICENSE.txt": "/VatoGamtsemlidze-Ecommerce/static/js/2.29f9d2c1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d438dce3.js",
+    "static/js/2.29f9d2c1.chunk.js",
+    "static/css/main.becb8901.chunk.css",
+    "static/js/main.02fb9d21.chunk.js"
+  ]
+}
